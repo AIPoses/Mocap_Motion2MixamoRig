@@ -1,0 +1,170 @@
+# Motion2MixamoRig
+
+![Motion2MixamoRig](repo_poster.png)
+
+<p align="center">
+  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · Tiếng Việt
+</p>
+
+Chuyển chuyển động của một người trong video — hoặc tư thế trong một bức ảnh tĩnh — sang nhân vật 3D đã được rig bằng Adobe Mixamo.
+
+Dành cho nhà phát triển game: đưa vào một video hành động có **một người duy nhất** (hoặc một ảnh tĩnh) cùng một nhân vật Mixamo; công cụ sẽ xuất các video xem trước và một tệp nhân vật đã skin (`.glb`) để bạn kéo thẳng vào Blender hoặc Unity.
+
+> Motion2MixamoRig hiện vẫn đang ở giai đoạn thử nghiệm. Phiên bản 0.1.0 là pipeline dòng lệnh. Kho mã này cũng có một Blender 4.2+ Extension chạy chính pipeline đó trong một môi trường Python bên ngoài. Cách cài đặt và sử dụng add-on: [`blender_extension/README.md`](blender_extension/README.md).
+
+Agent nên bắt đầu từ [`AGENTS.md`](AGENTS.md).
+
+https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
+
+<p align="center">
+  <sub>Mở <a href="demo.mp4">demo.mp4</a> trong kho mã này.</sub>
+</p>
+
+Một bản demo khác:
+
+https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
+
+## Yêu cầu
+
+Python 3.10+. Sau khi clone, hãy tạo virtualenv và cài các phụ thuộc; khi đó lệnh `m2mr` sẽ dùng được:
+
+```bash
+git clone https://github.com/MaxLiu22/Motion2MixamoRig.git
+cd Motion2MixamoRig
+python -m venv .venv && source .venv/bin/activate
+
+# Cài các phụ thuộc và dự án này. chumpy (một gói cũ trong chuỗi phụ thuộc)
+# import pip trong script setup của nó, nên sẽ báo lỗi "No module named 'pip'"
+# trong môi trường build cô lập mặc định của pip. Hãy cài nó trước với chế độ
+# cô lập đã tắt, rồi mới cài dự án này.
+pip install --upgrade pip setuptools wheel \
+  && pip install "numpy>=1.26" \
+  && pip install --no-build-isolation "chumpy==0.70" \
+  && pip install -e .
+```
+
+Trọng số suy luận (GVHMR, v.v.) không được tải ở bước này. Lần `m2mr run` đầu tiên sẽ tự tải chúng về `weights/` (~5 GB, chỉ một lần).
+
+Nên cài thêm ffmpeg (macOS: `brew install ffmpeg`, Ubuntu: `apt install ffmpeg`).
+Pipeline vẫn chạy được khi không có nó, nhưng video đầu ra sẽ **không có tiếng** và không phát được trong trình duyệt.
+
+## Trước khi chạy: đặt các tệp này vào `assets/`
+
+Kho mã này không kèm các tệp dưới đây; bạn phải tự tải về. Tên tệp SMPL-X phải khớp chính xác với bảng; tên tệp FBX, video và ảnh thì tùy ý. Mỗi lần chạy cần SMPL-X, một nhân vật Mixamo, và **hoặc** một video **hoặc** một ảnh tĩnh.
+
+| Tệp | Vị trí | Nơi tải |
+|---|---|---|
+| Mô hình cơ thể SMPL-X | `assets/body_models/smplx/SMPLX_NEUTRAL.npz` | Đăng ký tại [SMPL-X](https://smpl-x.is.tue.mpg.de/) rồi tải về |
+| FBX nhân vật Mixamo | `assets/mixamo/Y_Bot.fbx` | Dùng tài khoản Adobe để tải Y Bot (hoặc bất kỳ nhân vật nào đã rig bằng Mixamo) từ [Mixamo](https://www.mixamo.com) |
+| Video hành động | `assets/video/<your_clip>.mp4` | Một đoạn video có **đúng một** người nhìn rõ, **từ đầu đến chân luôn nằm trong khung hình** (có thể để nhiều tệp; mỗi lần chạy dùng tệp được thêm vào gần nhất) |
+| Ảnh tư thế (tùy chọn) | `assets/image/<your_photo>.jpg` | Một bức ảnh có **đúng một** người nhìn rõ, **từ đầu đến chân nằm trong khung hình**. Dùng với `--image` |
+
+Lưu ý: tệp tải từ Mixamo có tên `Y Bot.fbx` (**dấu cách**), khác đúng một ký tự so với `Y_Bot.fbx` (**dấu gạch dưới**) trong bảng.
+Đổi tên sang dạng gạch dưới thì nó sẽ thành rig mặc định (`m2mr run` không cần `--rig`). Giữ nguyên dấu cách cũng được — nếu không có `Y_Bot.fbx`, tệp `.fbx` đầu tiên trong `assets/mixamo/` sẽ được dùng.
+
+`assets/video/` có thể chứa nhiều video. Khi không có `--video` hoặc `--image`, lần chạy sẽ dùng tệp **được thêm vào gần nhất** trong `assets/video/`; nếu thư mục đó trống, nó sẽ chuyển sang ảnh tĩnh mới nhất trong `assets/image/`.
+Mỗi video hoặc ảnh chỉ được có một người, **từ đầu đến chân nằm trong khung hình** — không bị cắt ở mép. `m2mr doctor` / `m2mr run` sẽ dừng trước bước trích xuất nếu có hai người trong khung hình.
+
+## Bắt đầu nhanh
+
+Kết quả nằm trong `outputs/<run-time>_<source>/`. Lần chạy với video ghi vào `videos/`; lần chạy với ảnh tĩnh ghi vào `images/`.
+
+### 1. Kiểm tra tài nguyên và môi trường
+
+Mọi thứ còn thiếu sẽ được in ra kèm nơi tải và nơi đặt tệp.
+
+```bash
+m2mr doctor
+```
+
+### 2. Lần chạy đầu tiên: có kết quả trên màn hình
+
+Không có tham số nào, lệnh này dùng **tệp mới nhất trong `assets/video/`** và `assets/mixamo/Y_Bot.fbx`.
+
+```bash
+m2mr run
+```
+
+Đây là bước chậm. Lần chạy đầu tiên tải ~5 GB trọng số suy luận (chỉ một lần), sau đó trích xuất chuyển động người từ video.
+Trên CPU, một đoạn video ~30 giây mất khoảng 8–15 phút để trích xuất; các lần chạy sau với độ dài tương tự, khi trọng số đã có sẵn, mất khoảng 3–5 phút.
+Retarget và render thường mất một hai phút. Dùng lại khung xương bằng `--skeleton` ở phần tiếp theo sẽ bỏ qua hoàn toàn bước trích xuất và xong trong vài chục giây.
+
+### 3. Cùng chuyển động, nhân vật khác
+
+Tải thêm một nhân vật khác từ Mixamo vào `assets/mixamo/`. **Đừng chạy lại chỉ với `--rig`** — như vậy sẽ lặp lại bước trích xuất chậm.
+Truyền `--skeleton` để dùng lại khung xương từ lần chạy trước; vài phút sẽ rút xuống còn vài chục giây:
+
+```bash
+m2mr run --skeleton outputs/<previous-run-dir>/skeleton_motion.npz --rig assets/mixamo/Vampire.fbx
+```
+
+### 4. Một video khác
+
+`--video` chọn đoạn video. Có thể kết hợp tự do với `--rig`.
+
+```bash
+m2mr run --video assets/video/dance.mp4 --rig assets/mixamo/Vampire.fbx
+```
+
+### 5. Một ảnh tĩnh (tư thế tĩnh)
+
+`--image` khôi phục một **tư thế 3D tĩnh** từ ảnh chụp một người, rồi retarget nó lên nhân vật Mixamo giống như lần chạy với video. Bản xem trước gồm bốn ảnh tĩnh trong `images/` (cùng các góc nhìn như lần chạy video), cùng một đoạn quay quanh trái/phải `before_after_360_compare.mp4`. Không truyền `--video` cùng lúc.
+
+```bash
+m2mr run --image assets/image/pose.jpg
+m2mr run --image assets/image/pose.jpg --rig assets/mixamo/Vampire.fbx
+```
+
+`--image` không kèm đường dẫn sẽ dùng tệp được thêm vào gần nhất trong `assets/image/`.
+
+## Đầu ra
+
+Mỗi lần `m2mr run` tạo một thư mục được đặt tên theo **thời điểm lệnh bắt đầu**. Bốn tệp ở thư mục gốc giống nhau cho video và ảnh tĩnh; chỉ thư mục xem trước là khác.
+
+```
+outputs/20260829_193205_dance/          # hoặc …_pose/ với ảnh tĩnh
+├── run.json                            # thời điểm bắt đầu, đầu vào, lệnh đầy đủ
+├── skeleton_motion.npz                 # khung xương người 3D (dùng lại với --skeleton)
+├── mixamo_rotations.npz                # góc xoay Mixamo theo từng xương
+├── mixamo_character.glb                # nhân vật đã skin, nhập vào Blender / Unity
+└── videos/   hoặc   images/            # bản xem trước — tùy theo đầu vào
+```
+
+**Đầu vào video** ghi ra `videos/` (cùng tỉ lệ khung hình với đoạn video):
+
+```
+videos/
+├── human_skeleton.mp4                  # khung xương người 3D đã khôi phục
+├── mixamo_skeleton.mp4                 # khung xương rig Mixamo
+├── mixamo_character.mp4                # nhân vật Mixamo đã skin
+└── compare.mp4                         # 2×2: bản gốc (trên trái) / khung xương Mixamo (trên phải)
+                                        #      khung xương người (dưới trái) / nhân vật (dưới phải)
+```
+
+**Đầu vào ảnh tĩnh** thay vào đó ghi ra `images/` (cùng bốn góc nhìn, cộng thêm một vòng xoay):
+
+```
+images/
+├── human_skeleton.png                  # khung xương người 3D đã khôi phục
+├── mixamo_skeleton.png                 # khung xương rig Mixamo
+├── mixamo_character.png                # nhân vật Mixamo đã skin
+├── compare.png                         # 2×2: bản gốc (trên trái) / khung xương Mixamo (trên phải)
+│                                       #      khung xương người (dưới trái) / nhân vật (dưới phải)
+└── before_after_360_compare.mp4        # trái: ảnh gốc
+                                        # phải: quay quanh rig mỗi bước 10° (trọn một vòng)
+```
+
+Mở `mixamo_character.glb` trong Blender: File → Import → glTF 2.0 (.glb/.gltf). Nếu camera đang hướng vào khoảng trống, hãy chọn mesh nhân vật rồi dùng View → Frame Selected. Cụm hình cầu trên đầu và tay là phần hiển thị xương, không phải mesh: trong Outliner, ẩn **Icosphere** và **armature**; giữ mesh đã skin ở trạng thái hiển thị. Đặt FPS của scene và khung hình cuối của timeline theo `run.json` (`fps`, `n_frames`) để phát lại khớp với nguồn. So sánh lần chạy video với `videos/mixamo_character.mp4`, lần chạy ảnh tĩnh với `images/mixamo_character.png` hoặc đoạn quay quanh.
+
+## Giấy phép
+
+Mã nguồn của kho này theo giấy phép Apache-2.0. Các tài nguyên bạn tự tải về có điều khoản riêng và không được phân phối lại cùng kho mã này:
+
+- **SMPL-X**: truy cập qua MPI; mặc định chỉ dùng cho nghiên cứu / giáo dục / nghệ thuật phi thương mại; sử dụng thương mại cần thỏa thuận riêng
+- **Mixamo FBX**: được dùng trong sản phẩm phát hành; không phân phối lại FBX gốc dưới dạng gói tài nguyên
+- **GVHMR và các trọng số suy luận khác**: tự động tải về `weights/` trong lần `m2mr run` đầu tiên, theo giấy phép của từng dự án gốc
+
+## Liên hệ
+
+Nếu bạn gặp vấn đề, cần hỗ trợ hoàn tất cài đặt cục bộ, hoặc muốn trao đổi về hợp tác, hãy gửi email tới:
+[maxliu2022sz@gmail.com](mailto:maxliu2022sz@gmail.com)
