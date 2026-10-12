@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · العربية · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · العربية · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 ينقل حركة شخص في مقطع فيديو — أو الوضعية في صورة ثابتة — إلى شخصية ثلاثية الأبعاد بهيكل تحريك Adobe Mixamo.
 
 للمطوّرين في مجال الألعاب: قدّم فيديو حركة لـ**شخص واحد** (أو صورة) وشخصية Mixamo؛ يكتب معاينات وملف شخصية مكسوّة (`.glb`) يمكن وضعه في Blender أو Unity.
 
-> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.0 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. تثبيت الإضافة واستخدامها: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.0 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. تثبيت الإضافة واستخدامها: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-ينبغي للوكلاء البرمجيين (Agents) البدء من [`AGENTS.md`](AGENTS.md).
+ينبغي للوكلاء البرمجيين (Agents) البدء من [`AGENTS.md`](../../AGENTS.md).
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>افتح <a href="demo.mp4">demo.mp4</a> في هذا المستودع.</sub>
+  <sub>افتح <a href="../assets/demo.mp4">demo.mp4</a> في هذا المستودع.</sub>
 </p>
 
 عرض توضيحي آخر:

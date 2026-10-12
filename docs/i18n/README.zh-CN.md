@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  中文 · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  中文 · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 把视频里人物的动作，或一张照片里的姿态，转到 Adobe Mixamo rig 的 3D 角色上。
 
 面向游戏开发者：输入一段**单人**动作视频（或一张人物照片）和一个 Mixamo 角色，输出预览视频，以及可直接丢进 Blender / Unity 的带皮角色文件（`.glb`）。
 
-> Motion2MixamoRig 目前仍处于实验阶段。v0.1.0 是命令行工作流。本仓库另有一个 Blender 4.2+ Extension，在外部 Python 里跑同一条 pipeline。插件的安装和用法见 [`blender_extension/README.md`](blender_extension/README.md)。
+> Motion2MixamoRig 目前仍处于实验阶段。v0.1.0 是命令行工作流。本仓库另有一个 Blender 4.2+ Extension，在外部 Python 里跑同一条 pipeline。插件的安装和用法见 [`blender_extension/README.md`](../../blender_extension/README.md)。
 
-Agent 请先读 [`AGENTS.md`](AGENTS.md)。
+Agent 请先读 [`AGENTS.md`](../../AGENTS.md)。
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>打开本仓库中的 <a href="demo.mp4">demo.mp4</a>。</sub>
+  <sub>打开本仓库中的 <a href="../assets/demo.mp4">demo.mp4</a>。</sub>
 </p>
 
 另一个 demo：

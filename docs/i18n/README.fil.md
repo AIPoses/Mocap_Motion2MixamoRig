@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · Filipino · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · Filipino · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 Ilipat ang galaw ng isang tao sa video — o ang pose sa isang still na larawan — sa isang 3D character na naka-rig gamit ang Adobe Mixamo.
 
 Para sa mga game developer: bigyan ito ng action video na may **iisang tao** (o isang still) at isang Mixamo character; gagawa ito ng mga preview video at isang skinned na character file (`.glb`) na puwede mong ilagay agad sa Blender o Unity.
 
-> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.0 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Paano i-install at gamitin ang add-on: [`blender_extension/README.md`](blender_extension/README.md).
+> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.0 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Paano i-install at gamitin ang add-on: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Dapat magsimula ang mga agent sa [`AGENTS.md`](AGENTS.md).
+Dapat magsimula ang mga agent sa [`AGENTS.md`](../../AGENTS.md).
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>Buksan ang <a href="demo.mp4">demo.mp4</a> sa repository na ito.</sub>
+  <sub>Buksan ang <a href="../assets/demo.mp4">demo.mp4</a> sa repository na ito.</sub>
 </p>
 
 Isa pang demo:

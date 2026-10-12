@@ -1,9 +1,9 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](docs/assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · English · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="docs/i18n/README.zh-CN.md">中文</a> · English · <a href="docs/i18n/README.ko.md">한국어</a> · <a href="docs/i18n/README.ja.md">日本語</a> · <a href="docs/i18n/README.de.md">Deutsch</a> · <a href="docs/i18n/README.ru.md">Русский</a> · <a href="docs/i18n/README.ar.md">العربية</a> · <a href="docs/i18n/README.vi.md">Tiếng Việt</a> · <a href="docs/i18n/README.fil.md">Filipino</a> · <a href="docs/i18n/README.th.md">ไทย</a> · <a href="docs/i18n/README.fr.md">Français</a> · <a href="docs/i18n/README.es-MX.md">Español</a> · <a href="docs/i18n/README.tr.md">Türkçe</a>
 </p>
 
 Transfer the motion of a person in a video — or the pose in a still photo — onto an Adobe Mixamo-rigged 3D character.
@@ -17,7 +17,7 @@ Agents should start with [`AGENTS.md`](AGENTS.md).
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>Open <a href="demo.mp4">demo.mp4</a> in this repository.</sub>
+  <sub>Open <a href="docs/assets/demo.mp4">demo.mp4</a> in this repository.</sub>
 </p>
 
 Another demo:

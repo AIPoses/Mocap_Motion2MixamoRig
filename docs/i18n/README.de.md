@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · Deutsch · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · Deutsch · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 Überträgt die Bewegung einer Person aus einem Video — oder die Pose aus einem Foto — auf einen Adobe-Mixamo-geriggten 3D-Charakter.
 
 Für Spieleentwickler: ein Video mit **genau einer Person** (oder ein Still) und ein Mixamo-Charakter; Ausgabe sind Vorschauen plus eine Charakterdatei mit Skinning (`.glb`) für Blender oder Unity.
 
-> Motion2MixamoRig ist noch experimentell. Version 0.1.0 ist die Kommandozeilen-Pipeline. In diesem Repository liegt außerdem eine Blender-4.2+-Extension, die dieselbe Pipeline in einem externen Python ausführt. Installation und Bedienung des Add-ons: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig ist noch experimentell. Version 0.1.0 ist die Kommandozeilen-Pipeline. In diesem Repository liegt außerdem eine Blender-4.2+-Extension, die dieselbe Pipeline in einem externen Python ausführt. Installation und Bedienung des Add-ons: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Agents beginnen mit [`AGENTS.md`](AGENTS.md).
+Agents beginnen mit [`AGENTS.md`](../../AGENTS.md).
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub><a href="demo.mp4">demo.mp4</a> in diesem Repository öffnen.</sub>
+  <sub><a href="../assets/demo.mp4">demo.mp4</a> in diesem Repository öffnen.</sub>
 </p>
 
 Weiteres Demo:

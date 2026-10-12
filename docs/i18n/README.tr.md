@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · Türkçe
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · Türkçe
 </p>
 
 Bir videodaki kişinin hareketini — ya da bir fotoğraftaki pozu — Adobe Mixamo ile rig'lenmiş bir 3D karaktere aktarın.
 
 Oyun geliştiricileri için: **tek kişilik** bir aksiyon videosu (ya da bir fotoğraf) ve bir Mixamo karakteri verin; araç önizleme videoları ile Blender veya Unity'ye doğrudan aktarabileceğiniz skin'lenmiş bir karakter dosyası (`.glb`) üretir.
 
-> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.0 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentinin kurulumu ve kullanımı: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.0 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentinin kurulumu ve kullanımı: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Agent'lar işe [`AGENTS.md`](AGENTS.md) ile başlamalıdır.
+Agent'lar işe [`AGENTS.md`](../../AGENTS.md) ile başlamalıdır.
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>Bu depodaki <a href="demo.mp4">demo.mp4</a> dosyasını açın.</sub>
+  <sub>Bu depodaki <a href="../assets/demo.mp4">demo.mp4</a> dosyasını açın.</sub>
 </p>
 
 Başka bir demo:

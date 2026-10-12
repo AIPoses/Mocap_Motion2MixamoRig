@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · 日本語 · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · 日本語 · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 動画の人物の動き — または静止画のポーズ — を、Adobe Mixamo rig の 3D キャラクターに移します。
 
 ゲーム開発者向け：入力は**一人**の動作動画（または写真）と Mixamo キャラクター。プレビューと、Blender / Unity にそのまま入れられるスキン付きキャラクターファイル（`.glb`）を書き出します。
 
-> Motion2MixamoRig はまだ実験段階です。v0.1.0 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンの導入と使い方は [`blender_extension/README.md`](blender_extension/README.md)。
+> Motion2MixamoRig はまだ実験段階です。v0.1.0 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンの導入と使い方は [`blender_extension/README.md`](../../blender_extension/README.md)。
 
-Agent は先に [`AGENTS.md`](AGENTS.md) を読んでください。
+Agent は先に [`AGENTS.md`](../../AGENTS.md) を読んでください。
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>このリポジトリの <a href="demo.mp4">demo.mp4</a> を開いてください。</sub>
+  <sub>このリポジトリの <a href="../assets/demo.mp4">demo.mp4</a> を開いてください。</sub>
 </p>
 
 別のデモ：

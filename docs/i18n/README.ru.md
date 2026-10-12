@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · Русский · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · Русский · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 Переносит движение человека из видео — или позу с фото — на 3D-персонажа с ригом Adobe Mixamo.
 
 Для разработчиков игр: видео с **одним человеком** (или фото) и персонаж Mixamo; на выходе превью и файл персонажа со скином (`.glb`) для Blender или Unity.
 
-> Motion2MixamoRig пока экспериментален. Версия 0.1.0 — конвейер командной строки. В этом репозитории также есть расширение Blender 4.2+, которое запускает тот же конвейер во внешнем Python. Установка и использование аддона: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig пока экспериментален. Версия 0.1.0 — конвейер командной строки. В этом репозитории также есть расширение Blender 4.2+, которое запускает тот же конвейер во внешнем Python. Установка и использование аддона: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Агентам следует начать с [`AGENTS.md`](AGENTS.md).
+Агентам следует начать с [`AGENTS.md`](../../AGENTS.md).
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>Откройте <a href="demo.mp4">demo.mp4</a> в этом репозитории.</sub>
+  <sub>Откройте <a href="../assets/demo.mp4">demo.mp4</a> в этом репозитории.</sub>
 </p>
 
 Ещё одно демо:

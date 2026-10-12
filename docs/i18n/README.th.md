@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · ไทย · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · ไทย · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 ถ่ายทอดการเคลื่อนไหวของคนในวิดีโอ — หรือท่าทางในภาพนิ่ง — ไปยังตัวละคร 3D ที่ริกด้วย Adobe Mixamo
 
 สำหรับนักพัฒนาเกม: ใส่วิดีโอแอ็กชันที่มี **คนเพียงคนเดียว** (หรือภาพนิ่ง) กับตัวละคร Mixamo หนึ่งตัว เครื่องมือจะสร้างวิดีโอพรีวิวและไฟล์ตัวละครที่ skin แล้ว (`.glb`) ซึ่งนำไปใช้ใน Blender หรือ Unity ได้ทันที
 
-> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.0 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย วิธีติดตั้งและใช้งาน add-on: [`blender_extension/README.md`](blender_extension/README.md)
+> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.0 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย วิธีติดตั้งและใช้งาน add-on: [`blender_extension/README.md`](../../blender_extension/README.md)
 
-Agent ควรเริ่มจาก [`AGENTS.md`](AGENTS.md)
+Agent ควรเริ่มจาก [`AGENTS.md`](../../AGENTS.md)
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>เปิด <a href="demo.mp4">demo.mp4</a> ในรีโพนี้</sub>
+  <sub>เปิด <a href="../assets/demo.mp4">demo.mp4</a> ในรีโพนี้</sub>
 </p>
 
 เดโมอีกชิ้น:

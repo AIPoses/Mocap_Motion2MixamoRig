@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · 한국어 · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · 한국어 · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 영상 속 사람의 동작 — 또는 사진 속 자세 — 를 Adobe Mixamo rig 3D 캐릭터로 옮깁니다.
 
 게임 개발자를 위한 도구입니다. **한 사람만** 나오는 동작 영상(또는 사진)과 Mixamo 캐릭터를 넣으면 미리보기와, Blender / Unity에 바로 넣을 수 있는 스키닝된 캐릭터 파일(`.glb`)을 생성합니다.
 
-> Motion2MixamoRig는 아직 실험 단계입니다. v0.1.0은 명령줄 파이프라인입니다. 이 저장소의 Blender 4.2+ Extension은 같은 파이프라인을 외부 Python에서 실행합니다. 애드온 설치와 사용법: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig는 아직 실험 단계입니다. v0.1.0은 명령줄 파이프라인입니다. 이 저장소의 Blender 4.2+ Extension은 같은 파이프라인을 외부 Python에서 실행합니다. 애드온 설치와 사용법: [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Agent는 먼저 [`AGENTS.md`](AGENTS.md)를 읽어 주세요.
+Agent는 먼저 [`AGENTS.md`](../../AGENTS.md)를 읽어 주세요.
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>이 저장소의 <a href="demo.mp4">demo.mp4</a>를 열어 주세요.</sub>
+  <sub>이 저장소의 <a href="../assets/demo.mp4">demo.mp4</a>를 열어 주세요.</sub>
 </p>
 
 다른 데모:

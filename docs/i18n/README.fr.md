@@ -1,23 +1,23 @@
 # Motion2MixamoRig
 
-![Motion2MixamoRig](repo_poster.png)
+![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
-  <a href="README.zh-CN.md">中文</a> · <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · Français · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · Français · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a>
 </p>
 
 Transférez le mouvement d’une personne filmée — ou la pose d’une photo — sur un personnage 3D riggé avec Adobe Mixamo.
 
 Pour les développeurs de jeux : fournissez une vidéo d’action avec **une seule personne** (ou une photo) et un personnage Mixamo ; l’outil produit des vidéos d’aperçu ainsi qu’un fichier de personnage skinné (`.glb`) à importer directement dans Blender ou Unity.
 
-> Motion2MixamoRig est encore expérimental. La version 0.1.0 correspond au pipeline en ligne de commande. Ce dépôt contient aussi une extension Blender 4.2+ qui exécute ce même pipeline dans un environnement Python externe. Installation et utilisation du module : [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig est encore expérimental. La version 0.1.0 correspond au pipeline en ligne de commande. Ce dépôt contient aussi une extension Blender 4.2+ qui exécute ce même pipeline dans un environnement Python externe. Installation et utilisation du module : [`blender_extension/README.md`](../../blender_extension/README.md).
 
-Les agents doivent commencer par [`AGENTS.md`](AGENTS.md).
+Les agents doivent commencer par [`AGENTS.md`](../../AGENTS.md).
 
 https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
 
 <p align="center">
-  <sub>Ouvrez <a href="demo.mp4">demo.mp4</a> dans ce dépôt.</sub>
+  <sub>Ouvrez <a href="../assets/demo.mp4">demo.mp4</a> dans ce dépôt.</sub>
 </p>
 
 Une autre démo :
