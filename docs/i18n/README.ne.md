@@ -1,0 +1,170 @@
+# Motion2MixamoRig
+
+![Motion2MixamoRig](../assets/repo_poster.png)
+
+<p align="center">
+  <a href="README.zh-CN.md">中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a> · नेपाली
+</p>
+
+भिडियोमा भएको व्यक्तिको चाल — वा स्थिर फोटोमा भएको पोज — Adobe Mixamo ले rig गरिएको 3D क्यारेक्टरमा सार्नुहोस्।
+
+गेम डेभलपरहरूका लागि: **एक जना मात्र** व्यक्ति भएको एक्सन भिडियो (वा एउटा फोटो) र एउटा Mixamo क्यारेक्टर दिनुहोस्; यसले प्रिभ्यु भिडियोहरू र skin गरिएको क्यारेक्टर फाइल (`.glb`) बनाउँछ, जुन तपाईं सिधै Blender वा Unity मा राख्न सक्नुहुन्छ।
+
+> Motion2MixamoRig अहिले प्रयोगात्मक चरणमा छ। संस्करण 0.1.0 कमान्ड-लाइन pipeline हो। यो रिपोजिटरीमा उही pipeline लाई बाहिरी Python वातावरणमा चलाउने Blender 4.2+ Extension पनि समावेश छ। एड-अन कसरी इन्स्टल र प्रयोग गर्ने: [`blender_extension/README.md`](../../blender_extension/README.md)।
+
+Agent हरूले [`AGENTS.md`](../../AGENTS.md) बाट सुरु गर्नुपर्छ।
+
+https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
+
+<p align="center">
+  <sub>यो रिपोजिटरीमा <a href="../assets/demo.mp4">demo.mp4</a> खोल्नुहोस्।</sub>
+</p>
+
+अर्को डेमो:
+
+https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
+
+## आवश्यकताहरू
+
+Python 3.10+। clone गरेपछि virtualenv बनाउनुहोस् र dependency हरू इन्स्टल गर्नुहोस्; त्यसपछि `m2mr` कमान्ड प्रयोग गर्न मिल्छ:
+
+```bash
+git clone https://github.com/MaxLiu22/Motion2MixamoRig.git
+cd Motion2MixamoRig
+python -m venv .venv && source .venv/bin/activate
+
+# dependency हरू र यो प्रोजेक्ट इन्स्टल गर्नुहोस्। chumpy (dependency chain को एउटा
+# पुरानो प्याकेज) ले आफ्नो setup स्क्रिप्टमा pip import गर्छ, त्यसैले pip को
+# पूर्वनिर्धारित isolated build मा "No module named 'pip'" भनेर असफल हुन्छ।
+# पहिले isolation बन्द गरेर यसलाई इन्स्टल गर्नुहोस्, अनि यो प्रोजेक्ट इन्स्टल गर्नुहोस्।
+pip install --upgrade pip setuptools wheel \
+  && pip install "numpy>=1.26" \
+  && pip install --no-build-isolation "chumpy==0.70" \
+  && pip install -e .
+```
+
+Inference weight हरू (GVHMR आदि) यो चरणमा डाउनलोड हुँदैनन्। पहिलो `m2mr run` ले तिनलाई `weights/` मा तान्छ (~5 GB, एक पटक मात्र)।
+
+ffmpeg इन्स्टल गर्न सिफारिस गरिन्छ (macOS: `brew install ffmpeg`, Ubuntu: `apt install ffmpeg`)।
+यो बिना पनि pipeline चल्छ, तर आउटपुट भिडियोहरू **आवाजविहीन** हुन्छन् र ब्राउजरमा चल्दैनन्।
+
+## चलाउनु अघि: यी फाइलहरू `assets/` मा राख्नुहोस्
+
+यो रिपोजिटरीमा यी फाइलहरू समावेश छैनन्; तपाईं आफैंले ल्याउनुपर्छ। SMPL-X को फाइल नाम तालिकासँग ठ्याक्कै मिल्नुपर्छ; FBX, भिडियो र फोटोको नाम जुनसुकै हुन सक्छ। प्रत्येक run लाई SMPL-X, एउटा Mixamo क्यारेक्टर, र **कि त** एउटा भिडियो **कि त** एउटा फोटो चाहिन्छ।
+
+| के | कहाँ | कहाँबाट पाउने |
+|---|---|---|
+| SMPL-X शरीर मोडेल | `assets/body_models/smplx/SMPLX_NEUTRAL.npz` | [SMPL-X](https://smpl-x.is.tue.mpg.de/) मा दर्ता गरेर डाउनलोड गर्नुहोस् |
+| Mixamo क्यारेक्टर FBX | `assets/mixamo/Y_Bot.fbx` | Adobe खाता प्रयोग गरेर [Mixamo](https://www.mixamo.com) बाट Y Bot (वा Mixamo ले rig गरेको अरू कुनै क्यारेक्टर) डाउनलोड गर्नुहोस् |
+| एक्सन भिडियो | `assets/video/<your_clip>.mp4` | **ठ्याक्कै एक जना** स्पष्ट देखिने व्यक्ति भएको, **टाउकोदेखि खुट्टासम्म सधैं फ्रेमभित्र** रहेको क्लिप (धेरै फाइल राख्न सकिन्छ; हरेक run ले सबैभन्दा पछि थपिएको फाइल प्रयोग गर्छ) |
+| पोज फोटो (ऐच्छिक) | `assets/image/<your_photo>.jpg` | **ठ्याक्कै एक जना** स्पष्ट देखिने व्यक्ति भएको, **टाउकोदेखि खुट्टासम्म फ्रेमभित्र** रहेको फोटो। `--image` सँग प्रयोग गर्नुहोस् |
+
+ध्यान दिनुहोस्: Mixamo बाट डाउनलोड हुने फाइलको नाम `Y Bot.fbx` (**खाली ठाउँ सहित**) हुन्छ, जुन तालिकाको `Y_Bot.fbx` (**underscore सहित**) भन्दा एउटा अक्षरले मात्र फरक छ।
+यसलाई underscore भएको नाममा बदल्नुभयो भने यो पूर्वनिर्धारित rig बन्छ (`--rig` बिना `m2mr run`)। खाली ठाउँ नै राख्दा पनि हुन्छ — `Y_Bot.fbx` नभए `assets/mixamo/` को पहिलो `.fbx` प्रयोग हुन्छ।
+
+`assets/video/` मा धेरै भिडियो राख्न सकिन्छ। `--video` वा `--image` नदिँदा run ले `assets/video/` मा **सबैभन्दा पछि थपिएको** फाइल प्रयोग गर्छ; त्यो फोल्डर खाली भए `assets/image/` को सबैभन्दा नयाँ फोटो प्रयोग गर्छ।
+हरेक क्लिप वा फोटोमा एक जना मात्र व्यक्ति, **टाउकोदेखि खुट्टासम्म फ्रेमभित्र** हुनुपर्छ — किनारमा केही काटिएको हुनु हुँदैन। फ्रेममा दुई जना देखिए `m2mr doctor` / `m2mr run` extraction अघि नै रोकिन्छ।
+
+## छिटो सुरुवात
+
+नतिजाहरू `outputs/<run-time>_<source>/` मा राखिन्छन्। भिडियो run ले `videos/` मा लेख्छ; फोटो run ले `images/` मा लेख्छ।
+
+### 1. assets र वातावरण जाँच गर्नुहोस्
+
+नपुगेका सबै कुरा कहाँबाट डाउनलोड गर्ने र कहाँ राख्ने भन्ने जानकारीसहित देखाइन्छ।
+
+```bash
+m2mr doctor
+```
+
+### 2. पहिलो run: स्क्रिनमा नतिजा हेर्नुहोस्
+
+कुनै flag नदिँदा यसले **`assets/video/` को सबैभन्दा नयाँ फाइल** र `assets/mixamo/Y_Bot.fbx` प्रयोग गर्छ।
+
+```bash
+m2mr run
+```
+
+यो ढिलो चरण हो। पहिलो run ले ~5 GB inference weight डाउनलोड गर्छ (एक पटक मात्र), अनि भिडियोबाट मानिसको चाल निकाल्छ।
+CPU मा ~30 सेकेन्डको क्लिपको extraction मा करिब 8–15 मिनेट लाग्छ; weight हरू भइसकेपछि उस्तै लम्बाइका पछिल्ला run हरूमा करिब 3–5 मिनेट लाग्छ।
+Retargeting र render मा सामान्यतया एक-दुई मिनेट लाग्छ। अर्को खण्डमा `--skeleton` प्रयोग गरेर skeleton पुनः प्रयोग गर्दा extraction पूरै छोडिन्छ र केही दशक सेकेन्डमै सकिन्छ।
+
+### 3. उही चाल, अर्को क्यारेक्टर
+
+Mixamo बाट अर्को क्यारेक्टर `assets/mixamo/` मा डाउनलोड गर्नुहोस्। **केवल `--rig` दिएर फेरि नचलाउनुहोस्** — त्यसले ढिलो extraction दोहोर्याउँछ।
+अघिल्लो run को skeleton पुनः प्रयोग गर्न `--skeleton` दिनुहोस्; मिनेटहरू केही दशक सेकेन्डमा झर्छन्:
+
+```bash
+m2mr run --skeleton outputs/<previous-run-dir>/skeleton_motion.npz --rig assets/mixamo/Vampire.fbx
+```
+
+### 4. अर्को भिडियो
+
+`--video` ले क्लिप छान्छ। यसलाई `--rig` सँग स्वतन्त्र रूपमा जोड्न सकिन्छ।
+
+```bash
+m2mr run --video assets/video/dance.mp4 --rig assets/mixamo/Vampire.fbx
+```
+
+### 5. स्थिर फोटो (स्थिर पोज)
+
+`--image` ले एक जना व्यक्तिको फोटोबाट **स्थिर 3D पोज** निकाल्छ, अनि भिडियो run जस्तै गरी Mixamo क्यारेक्टरमा retarget गर्छ। प्रिभ्युमा `images/` भित्र चारवटा स्थिर तस्बिर (भिडियो run कै दृश्यहरू) र बायाँ/दायाँ घुम्ने orbit क्लिप `before_after_360_compare.mp4` हुन्छन्। एकै साथ `--video` नदिनुहोस्।
+
+```bash
+m2mr run --image assets/image/pose.jpg
+m2mr run --image assets/image/pose.jpg --rig assets/mixamo/Vampire.fbx
+```
+
+path बिनाको `--image` ले `assets/image/` मा सबैभन्दा पछि थपिएको फाइल प्रयोग गर्छ।
+
+## आउटपुट
+
+हरेक `m2mr run` ले **कमान्ड सुरु भएको समय** अनुसार नाम दिइएको डाइरेक्टरी बनाउँछ। root मा रहेका चारवटा फाइल भिडियो र फोटो दुवैका लागि उस्तै हुन्छन्; प्रिभ्यु फोल्डर मात्र फरक हुन्छ।
+
+```
+outputs/20260829_193205_dance/          # फोटोका लागि …_pose/
+├── run.json                            # सुरु समय, इनपुट, पूरा कमान्ड
+├── skeleton_motion.npz                 # मानिसको 3D skeleton (--skeleton सँग पुनः प्रयोग गर्नुहोस्)
+├── mixamo_rotations.npz                # हड्डी अनुसार Mixamo rotation
+├── mixamo_character.glb                # skin गरिएको क्यारेक्टर, Blender / Unity मा import गर्नुहोस्
+└── videos/   वा   images/              # प्रिभ्यु — इनपुटमा भर पर्छ
+```
+
+**भिडियो इनपुट** ले `videos/` मा लेख्छ (क्लिपकै aspect ratio मा):
+
+```
+videos/
+├── human_skeleton.mp4                  # पुनर्निर्माण गरिएको मानिसको 3D skeleton
+├── mixamo_skeleton.mp4                 # Mixamo rig को skeleton
+├── mixamo_character.mp4                # skin गरिएको Mixamo क्यारेक्टर
+└── compare.mp4                         # 2×2: मूल (माथि बायाँ) / Mixamo skeleton (माथि दायाँ)
+                                        #      मानिसको skeleton (तल बायाँ) / क्यारेक्टर (तल दायाँ)
+```
+
+**फोटो इनपुट** ले यसको सट्टा `images/` मा लेख्छ (उही चारवटा दृश्य, साथै एक पूरा घुमाइ):
+
+```
+images/
+├── human_skeleton.png                  # पुनर्निर्माण गरिएको मानिसको 3D skeleton
+├── mixamo_skeleton.png                 # Mixamo rig को skeleton
+├── mixamo_character.png                # skin गरिएको Mixamo क्यारेक्टर
+├── compare.png                         # 2×2: मूल (माथि बायाँ) / Mixamo skeleton (माथि दायाँ)
+│                                       #      मानिसको skeleton (तल बायाँ) / क्यारेक्टर (तल दायाँ)
+└── before_after_360_compare.mp4        # बायाँ: मूल फोटो
+                                        # दायाँ: rig वरिपरि 10° का दरले orbit (एक पूरा फन्को)
+```
+
+`mixamo_character.glb` लाई Blender मा खोल्नुहोस्: File → Import → glTF 2.0 (.glb/.gltf)। क्यामेरा खाली ठाउँतिर फर्केको छ भने क्यारेक्टरको mesh छानेर View → Frame Selected प्रयोग गर्नुहोस्। टाउको र हातमा देखिने गोलाहरूको झुप्पा हड्डीको display हो, mesh होइन: Outliner मा **Icosphere** र **armature** लुकाउनुहोस्; skin गरिएको mesh देखिने नै राख्नुहोस्। playback स्रोतसँग मिलोस् भनेर scene को FPS र timeline को अन्तिम frame `run.json` (`fps`, `n_frames`) अनुसार सेट गर्नुहोस्। भिडियो run लाई `videos/mixamo_character.mp4` सँग, र फोटो run लाई `images/mixamo_character.png` वा orbit क्लिपसँग तुलना गर्नुहोस्।
+
+## लाइसेन्स
+
+यो रिपोजिटरीको कोड Apache-2.0 अन्तर्गत छ। तपाईं आफैंले डाउनलोड गर्ने assets का आफ्नै सर्तहरू छन्, र तिनलाई यो repo सँगै पुनः वितरण गर्नु हुँदैन:
+
+- **SMPL-X**: MPI मार्फत पहुँच; पूर्वनिर्धारित रूपमा गैर-व्यावसायिक अनुसन्धान / शिक्षा / कला मात्र; व्यावसायिक प्रयोगका लागि छुट्टै सम्झौता चाहिन्छ
+- **Mixamo FBX**: प्रकाशित उत्पादनमा प्रयोग गर्न मिल्छ; कच्चा FBX लाई asset pack को रूपमा पुनः वितरण नगर्नुहोस्
+- **GVHMR र अन्य inference weight हरू**: पहिलो `m2mr run` मा `weights/` मा स्वतः डाउनलोड हुन्छन्, प्रत्येकको मूल प्रोजेक्टको लाइसेन्स अन्तर्गत
+
+## सम्पर्क
+
+कुनै समस्या आएमा, स्थानीय सेटअप पूरा गर्न सहयोग चाहिएमा, वा सहकार्यबारे कुरा गर्न चाहनुहुन्छ भने यो ठेगानामा इमेल गर्नुहोस्:
+[maxliu2022sz@gmail.com](mailto:maxliu2022sz@gmail.com)

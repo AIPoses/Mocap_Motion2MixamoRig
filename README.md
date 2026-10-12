@@ -3,7 +3,7 @@
 ![Motion2MixamoRig](docs/assets/repo_poster.png)
 
 <p align="center">
-  <a href="docs/i18n/README.zh-CN.md">中文</a> · English · <a href="docs/i18n/README.ko.md">한국어</a> · <a href="docs/i18n/README.ja.md">日本語</a> · <a href="docs/i18n/README.de.md">Deutsch</a> · <a href="docs/i18n/README.ru.md">Русский</a> · <a href="docs/i18n/README.ar.md">العربية</a> · <a href="docs/i18n/README.vi.md">Tiếng Việt</a> · <a href="docs/i18n/README.fil.md">Filipino</a> · <a href="docs/i18n/README.th.md">ไทย</a> · <a href="docs/i18n/README.fr.md">Français</a> · <a href="docs/i18n/README.es-MX.md">Español</a> · <a href="docs/i18n/README.tr.md">Türkçe</a>
+  <a href="docs/i18n/README.zh-CN.md">中文</a> · English · <a href="docs/i18n/README.ko.md">한국어</a> · <a href="docs/i18n/README.ja.md">日本語</a> · <a href="docs/i18n/README.de.md">Deutsch</a> · <a href="docs/i18n/README.ru.md">Русский</a> · <a href="docs/i18n/README.ar.md">العربية</a> · <a href="docs/i18n/README.vi.md">Tiếng Việt</a> · <a href="docs/i18n/README.fil.md">Filipino</a> · <a href="docs/i18n/README.th.md">ไทย</a> · <a href="docs/i18n/README.fr.md">Français</a> · <a href="docs/i18n/README.es-MX.md">Español</a> · <a href="docs/i18n/README.tr.md">Türkçe</a> · <a href="docs/i18n/README.ne.md">नेपाली</a>
 </p>
 
 Transfer the motion of a person in a video — or the pose in a still photo — onto an Adobe Mixamo-rigged 3D character.
