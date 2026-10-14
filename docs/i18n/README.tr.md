@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## Gereksinimler
 
-Python 3.10+. Klonladıktan sonra bir virtualenv oluşturun ve bağımlılıkları kurun; ardından `m2mr` komutu kullanılabilir olur:
+Python 3.11+. Klonladıktan sonra bir virtualenv oluşturun ve bağımlılıkları kurun; ardından `m2mr` komutu kullanılabilir olur:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

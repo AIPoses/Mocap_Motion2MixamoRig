@@ -18,7 +18,7 @@ SMPL-X, or bundle inference weights.
 Do this in a terminal, not inside Blender. Details (venv, `chumpy`, SMPL-X,
 Mixamo FBX) are in the [repository README](../README.md).
 
-1. Clone this repo and install Motion2MixamoRig into a Python 3.10+ venv.
+1. Clone this repo and install Motion2MixamoRig into a Python 3.11+ venv.
 2. Put `SMPLX_NEUTRAL.npz` at `assets/body_models/smplx/`.
 3. Download a Mixamo character as **FBX Binary, T-pose**.
 4. Confirm `python -m motion2mixamorig.cli doctor` in that venv.

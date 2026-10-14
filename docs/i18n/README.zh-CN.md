@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## 前置条件
 
-需要 Python 3.10+。克隆后建虚拟环境并安装依赖，`m2mr` 命令随之可用：
+需要 Python 3.11+。克隆后建虚拟环境并安装依赖，`m2mr` 命令随之可用：
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

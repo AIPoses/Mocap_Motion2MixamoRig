@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## 사전 요구 사항
 
-Python 3.10+가 필요합니다. 클론한 뒤 가상환경을 만들고 의존성을 설치하면 `m2mr` 명령을 쓸 수 있습니다:
+Python 3.11+가 필요합니다. 클론한 뒤 가상환경을 만들고 의존성을 설치하면 `m2mr` 명령을 쓸 수 있습니다:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

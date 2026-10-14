@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## आवश्यकताहरू
 
-Python 3.10+। clone गरेपछि virtualenv बनाउनुहोस् र dependency हरू इन्स्टल गर्नुहोस्; त्यसपछि `m2mr` कमान्ड प्रयोग गर्न मिल्छ:
+Python 3.11+। clone गरेपछि virtualenv बनाउनुहोस् र dependency हरू इन्स्टल गर्नुहोस्; त्यसपछि `m2mr` कमान्ड प्रयोग गर्न मिल्छ:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

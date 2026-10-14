@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## สิ่งที่ต้องมี
 
-Python 3.10+ หลัง clone แล้วให้สร้าง virtualenv และติดตั้ง dependency จากนั้นจะใช้คำสั่ง `m2mr` ได้:
+Python 3.11+ หลัง clone แล้วให้สร้าง virtualenv และติดตั้ง dependency จากนั้นจะใช้คำสั่ง `m2mr` ได้:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

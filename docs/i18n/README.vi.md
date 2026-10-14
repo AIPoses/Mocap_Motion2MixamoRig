@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## Yêu cầu
 
-Python 3.10+. Sau khi clone, hãy tạo virtualenv và cài các phụ thuộc; khi đó lệnh `m2mr` sẽ dùng được:
+Python 3.11+. Sau khi clone, hãy tạo virtualenv và cài các phụ thuộc; khi đó lệnh `m2mr` sẽ dùng được:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

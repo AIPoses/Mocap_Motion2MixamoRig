@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## 事前準備
 
-Python 3.10+ が必要です。クローン後に仮想環境を作り依存関係を入れると、`m2mr` が使えます：
+Python 3.11+ が必要です。クローン後に仮想環境を作り依存関係を入れると、`m2mr` が使えます：
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## Requisitos
 
-Python 3.10+. Después de clonar, crea un virtualenv e instala las dependencias; con eso ya tendrás disponible el comando `m2mr`:
+Python 3.11+. Después de clonar, crea un virtualenv e instala las dependencias; con eso ya tendrás disponible el comando `m2mr`:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

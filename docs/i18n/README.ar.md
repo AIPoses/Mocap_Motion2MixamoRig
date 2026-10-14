@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## المتطلبات
 
-يلزم توفر Python 3.10+. بعد الاستنساخ، أنشئ بيئة افتراضية وثبّت الاعتماديات؛ يصبح أمر `m2mr` متاحًا بعد ذلك:
+يلزم توفر Python 3.11+. بعد الاستنساخ، أنشئ بيئة افتراضية وثبّت الاعتماديات؛ يصبح أمر `m2mr` متاحًا بعد ذلك:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git

@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
 
 ## Voraussetzungen
 
-Python 3.10+. Nach dem Klonen eine virtuelle Umgebung anlegen und Abhängigkeiten installieren; danach steht `m2mr` bereit:
+Python 3.11+. Nach dem Klonen eine virtuelle Umgebung anlegen und Abhängigkeiten installieren; danach steht `m2mr` bereit:
 
 ```bash
 git clone https://github.com/MaxLiu22/Motion2MixamoRig.git
