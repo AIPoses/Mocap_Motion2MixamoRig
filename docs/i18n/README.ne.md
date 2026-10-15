@@ -1,5 +1,11 @@
 # Motion2MixamoRig
 
+<p align="center">
+  <a href="#आवश्यकताहरू"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
+  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
+</p>
+
 ![Motion2MixamoRig](../assets/repo_poster.png)
 
 <p align="center">
