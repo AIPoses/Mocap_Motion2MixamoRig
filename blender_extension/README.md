@@ -34,7 +34,7 @@ From the repository root:
 python scripts/package_blender_extension.py
 ```
 
-That writes `dist/motion2mixamorig-0.1.0.zip`. The zip root is
+That writes `dist/motion2mixamorig-0.1.5.zip`. The zip root is
 `blender_manifest.toml` + `__init__.py` (no wrapping folder).
 
 In Blender 4.2+:
@@ -47,7 +47,7 @@ In Blender 4.2+:
 Command line:
 
 ```bash
-blender --command extension install-file --repo user_default --enable dist/motion2mixamorig-0.1.0.zip
+blender --command extension install-file --repo user_default --enable dist/motion2mixamorig-0.1.5.zip
 ```
 
 After you change the add-on code, rebuild the zip and install it again. The

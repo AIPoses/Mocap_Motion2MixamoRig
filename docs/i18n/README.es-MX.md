@@ -16,7 +16,7 @@ Transfiere el movimiento de una persona en un video — o la pose de una foto fi
 
 Para desarrolladores de videojuegos: dale un video de acción con **una sola persona** (o una foto) y un personaje de Mixamo; genera videos de vista previa y un archivo de personaje con skinning (`.glb`) que puedes llevar directo a Blender o Unity.
 
-> Motion2MixamoRig todavía es experimental. La versión 0.1.0 es el pipeline de línea de comandos. Este repositorio también incluye una extensión para Blender 4.2+ que ejecuta ese mismo pipeline en un entorno de Python externo. Cómo instalar y usar el complemento: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig todavía es experimental. La versión 0.1.5 es el pipeline de línea de comandos. Este repositorio también incluye una extensión para Blender 4.2+ que ejecuta ese mismo pipeline en un entorno de Python externo. Cómo instalar y usar el complemento: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 Los agentes deben empezar por [`AGENTS.md`](../../AGENTS.md).
 

@@ -16,7 +16,7 @@
 
 สำหรับนักพัฒนาเกม: ใส่วิดีโอแอ็กชันที่มี **คนเพียงคนเดียว** (หรือภาพนิ่ง) กับตัวละคร Mixamo หนึ่งตัว เครื่องมือจะสร้างวิดีโอพรีวิวและไฟล์ตัวละครที่ skin แล้ว (`.glb`) ซึ่งนำไปใช้ใน Blender หรือ Unity ได้ทันที
 
-> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.0 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย วิธีติดตั้งและใช้งาน add-on: [`blender_extension/README.md`](../../blender_extension/README.md)
+> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.5 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย วิธีติดตั้งและใช้งาน add-on: [`blender_extension/README.md`](../../blender_extension/README.md)
 
 Agent ควรเริ่มจาก [`AGENTS.md`](../../AGENTS.md)
 

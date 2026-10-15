@@ -16,7 +16,7 @@
 
 गेम डेभलपरहरूका लागि: **एक जना मात्र** व्यक्ति भएको एक्सन भिडियो (वा एउटा फोटो) र एउटा Mixamo क्यारेक्टर दिनुहोस्; यसले प्रिभ्यु भिडियोहरू र skin गरिएको क्यारेक्टर फाइल (`.glb`) बनाउँछ, जुन तपाईं सिधै Blender वा Unity मा राख्न सक्नुहुन्छ।
 
-> Motion2MixamoRig अहिले प्रयोगात्मक चरणमा छ। संस्करण 0.1.0 कमान्ड-लाइन pipeline हो। यो रिपोजिटरीमा उही pipeline लाई बाहिरी Python वातावरणमा चलाउने Blender 4.2+ Extension पनि समावेश छ। एड-अन कसरी इन्स्टल र प्रयोग गर्ने: [`blender_extension/README.md`](../../blender_extension/README.md)।
+> Motion2MixamoRig अहिले प्रयोगात्मक चरणमा छ। संस्करण 0.1.5 कमान्ड-लाइन pipeline हो। यो रिपोजिटरीमा उही pipeline लाई बाहिरी Python वातावरणमा चलाउने Blender 4.2+ Extension पनि समावेश छ। एड-अन कसरी इन्स्टल र प्रयोग गर्ने: [`blender_extension/README.md`](../../blender_extension/README.md)।
 
 Agent हरूले [`AGENTS.md`](../../AGENTS.md) बाट सुरु गर्नुपर्छ।
 

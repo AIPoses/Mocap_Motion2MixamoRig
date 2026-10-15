@@ -56,7 +56,7 @@ How to install and use it (for the user, or to walk them through it):
 When helping a user:
 
 1. They need the same venv + SMPL-X + Mixamo FBX as the CLI (see Setup above).
-2. Build `dist/motion2mixamorig-0.1.0.zip` with
+2. Build `dist/motion2mixamorig-0.1.5.zip` with
    `python scripts/package_blender_extension.py`.
 3. In Blender 4.2+: **Edit → Preferences → Get Extensions**, then the **∨**
    next to Repositories → **Install from Disk…** (no large button). Enable it.
@@ -96,4 +96,4 @@ Each run writes `outputs/<YYYYMMDD_HHMMSS>_<source>/`:
 - `blender_extension/motion2mixamorig_blender/` — Blender 4.2+ Extension (UI + external process)
 - `blender_extension/README.md` — install and use the add-on
 - `docs/blender-extension.md` — maintainer smoke-test checklist
-- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.0.zip`
+- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.5.zip`

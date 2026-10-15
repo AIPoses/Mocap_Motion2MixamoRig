@@ -16,7 +16,7 @@
 
 給遊戲開發者：輸入一段**單人**動作影片（或一張人物照片）和一個 Mixamo 角色，就會輸出預覽影片，以及可以直接放進 Blender / Unity 的已蒙皮角色檔（`.glb`）。
 
-> Motion2MixamoRig 目前仍在實驗階段。v0.1.0 是命令列工作流程。本儲存庫另外提供一個 Blender 4.2+ Extension，會在外部的 Python 環境中執行同一條 pipeline。外掛的安裝與使用方式請見 [`blender_extension/README.md`](../../blender_extension/README.md)。
+> Motion2MixamoRig 目前仍在實驗階段。v0.1.5 是命令列工作流程。本儲存庫另外提供一個 Blender 4.2+ Extension，會在外部的 Python 環境中執行同一條 pipeline。外掛的安裝與使用方式請見 [`blender_extension/README.md`](../../blender_extension/README.md)。
 
 Agent 請先閱讀 [`AGENTS.md`](../../AGENTS.md)。
 
