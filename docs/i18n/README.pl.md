@@ -1,0 +1,176 @@
+# Motion2MixamoRig
+
+<p align="center">
+  <a href="#wymagania"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
+  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
+</p>
+
+![Motion2MixamoRig](../assets/repo_poster.png)
+
+<p align="center">
+  <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a> · <a href="README.ne.md">नेपाली</a> · <a href="README.id.md">Bahasa Indonesia</a> · Polski · <a href="README.nl.md">Nederlands</a>
+</p>
+
+Przenieś ruch osoby z nagrania wideo — albo pozę ze zdjęcia — na postać 3D zriggowaną w Adobe Mixamo.
+
+Dla twórców gier: podaj nagranie akcji z **jedną osobą** (albo zdjęcie) i postać z Mixamo; narzędzie wygeneruje filmy podglądowe oraz plik postaci ze skinningiem (`.glb`), który możesz od razu wczytać do Blendera lub Unity.
+
+> Motion2MixamoRig jest na razie eksperymentalny. Wersja 0.1.0 to pipeline wiersza poleceń. To repozytorium zawiera też rozszerzenie Blender 4.2+ Extension, które uruchamia ten sam pipeline w zewnętrznym środowisku Pythona. Instalacja i obsługa dodatku: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+Agenci powinni zacząć od [`AGENTS.md`](../../AGENTS.md).
+
+https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
+
+<p align="center">
+  <sub>Otwórz <a href="../assets/demo.mp4">demo.mp4</a> w tym repozytorium.</sub>
+</p>
+
+Kolejne demo:
+
+https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
+
+## Wymagania
+
+Python 3.11+. Po sklonowaniu utwórz virtualenv i zainstaluj zależności; potem polecenie `m2mr` będzie dostępne:
+
+```bash
+git clone https://github.com/MaxLiu22/Motion2MixamoRig.git
+cd Motion2MixamoRig
+python -m venv .venv && source .venv/bin/activate
+
+# Zainstaluj zależności i ten projekt. chumpy (stary pakiet w łańcuchu zależności)
+# importuje pip w swoim skrypcie setup, więc w domyślnym izolowanym buildzie pip
+# kończy się błędem "No module named 'pip'". Najpierw zainstaluj go z wyłączoną
+# izolacją, a dopiero potem ten projekt.
+pip install --upgrade pip setuptools wheel \
+  && pip install "numpy>=1.26" \
+  && pip install --no-build-isolation "chumpy==0.70" \
+  && pip install -e .
+```
+
+Wagi modeli (GVHMR itd.) nie są pobierane na tym etapie. Pierwsze `m2mr run` pobierze je do `weights/` (~5 GB, tylko raz).
+
+Zalecane jest zainstalowanie ffmpeg (macOS: `brew install ffmpeg`, Ubuntu: `apt install ffmpeg`).
+Pipeline działa bez niego, ale wynikowe filmy będą **bez dźwięku** i nie odtworzą się w przeglądarce.
+
+## Zanim uruchomisz: umieść te pliki w `assets/`
+
+To repozytorium nie zawiera tych plików; musisz je pobrać samodzielnie. Nazwa pliku SMPL-X musi dokładnie odpowiadać tabeli; nazwy plików FBX, wideo i zdjęć są dowolne. Każde uruchomienie wymaga SMPL-X, postaci z Mixamo oraz **albo** wideo, **albo** zdjęcia.
+
+| Co | Gdzie | Skąd |
+|---|---|---|
+| Model ciała SMPL-X | `assets/body_models/smplx/SMPLX_NEUTRAL.npz` | Zarejestruj się na stronie [SMPL-X](https://smpl-x.is.tue.mpg.de/) i pobierz plik |
+| FBX postaci z Mixamo | `assets/mixamo/Y_Bot.fbx` | Za pomocą konta Adobe pobierz Y Bot (lub dowolną inną postać zriggowaną w Mixamo) z [Mixamo](https://www.mixamo.com) |
+| Nagranie akcji | `assets/video/<your_clip>.mp4` | Klip z **dokładnie jedną** wyraźnie widoczną osobą, **od stóp do głów przez cały czas w kadrze** (możesz trzymać kilka plików; każde uruchomienie używa ostatnio dodanego) |
+| Zdjęcie pozy (opcjonalnie) | `assets/image/<your_photo>.jpg` | Zdjęcie z **dokładnie jedną** wyraźnie widoczną osobą, **od stóp do głów w kadrze**. Używane z `--image` |
+
+Uwaga: plik pobrany z Mixamo nazywa się `Y Bot.fbx` (**ze spacją**), czyli różni się jednym znakiem od `Y_Bot.fbx` (**z podkreślnikiem**) w tabeli.
+Zmień nazwę na wersję z podkreślnikiem, a stanie się domyślnym rigiem (`m2mr run` bez `--rig`). Pozostawienie spacji też działa — jeśli brakuje `Y_Bot.fbx`, użyty zostanie pierwszy plik `.fbx` z `assets/mixamo/`.
+
+`assets/video/` może zawierać kilka filmów. Bez `--video` ani `--image` uruchomienie używa pliku **ostatnio dodanego** do `assets/video/`; jeśli ten folder jest pusty, używane jest najnowsze zdjęcie z `assets/image/`.
+Każdy klip lub zdjęcie może pokazywać tylko jedną osobę, **od stóp do głów w kadrze** — nic nie może być ucięte na krawędziach. `m2mr doctor` / `m2mr run` zatrzymają się przed ekstrakcją, jeśli w kadrze są dwie osoby.
+
+## Szybki start
+
+Wyniki trafiają do `outputs/<run-time>_<source>/`. Uruchomienia z wideo zapisują `videos/`; uruchomienia ze zdjęcia zapisują `images/`.
+
+### 1. Sprawdź zasoby i środowisko
+
+Wszystko, czego brakuje, zostanie wypisane razem z informacją, skąd to pobrać i gdzie umieścić.
+
+```bash
+m2mr doctor
+```
+
+### 2. Pierwsze uruchomienie: zobacz wynik na ekranie
+
+Bez żadnych opcji polecenie używa **najnowszego pliku z `assets/video/`** oraz `assets/mixamo/Y_Bot.fbx`.
+
+```bash
+m2mr run
+```
+
+To najwolniejszy krok. Pierwsze uruchomienie pobiera ~5 GB wag modeli (tylko raz), a potem wyodrębnia ruch człowieka z nagrania.
+Na CPU ekstrakcja klipu o długości ~30 sekund trwa około 8–15 minut; kolejne uruchomienia o podobnej długości, gdy wagi są już pobrane, trwają około 3–5 minut.
+Retargeting i renderowanie zajmują zwykle minutę lub dwie. Ponowne użycie szkieletu przez `--skeleton` w następnej sekcji całkowicie pomija ekstrakcję i kończy się w kilkadziesiąt sekund.
+
+### 3. Ten sam ruch, inna postać
+
+Pobierz inną postać z Mixamo do `assets/mixamo/`. **Nie uruchamiaj ponownie tylko z `--rig`** — to powtórzy wolną ekstrakcję.
+Podaj `--skeleton`, aby ponownie użyć szkieletu z poprzedniego uruchomienia; minuty zamieniają się w kilkadziesiąt sekund:
+
+```bash
+m2mr run --skeleton outputs/<previous-run-dir>/skeleton_motion.npz --rig assets/mixamo/Vampire.fbx
+```
+
+### 4. Inne nagranie
+
+`--video` wybiera klip. Można go dowolnie łączyć z `--rig`.
+
+```bash
+m2mr run --video assets/video/dance.mp4 --rig assets/mixamo/Vampire.fbx
+```
+
+### 5. Zdjęcie (poza statyczna)
+
+`--image` odtwarza **statyczną pozę 3D** ze zdjęcia jednej osoby, a następnie przenosi ją na postać z Mixamo tak samo jak w przypadku wideo. Podgląd to cztery obrazy w `images/` (te same widoki co przy wideo) oraz klip z obrotem w lewo/prawo `before_after_360_compare.mp4`. Nie podawaj jednocześnie `--video`.
+
+```bash
+m2mr run --image assets/image/pose.jpg
+m2mr run --image assets/image/pose.jpg --rig assets/mixamo/Vampire.fbx
+```
+
+`--image` bez ścieżki używa pliku ostatnio dodanego do `assets/image/`.
+
+## Wyniki
+
+Każde `m2mr run` tworzy katalog nazwany według **czasu uruchomienia polecenia**. Cztery pliki w katalogu głównym są takie same dla wideo i zdjęcia; zmienia się tylko folder z podglądem.
+
+```
+outputs/20260829_193205_dance/          # lub …_pose/ dla zdjęcia
+├── run.json                            # czas startu, dane wejściowe, pełne polecenie
+├── skeleton_motion.npz                 # szkielet 3D człowieka (do ponownego użycia z --skeleton)
+├── mixamo_rotations.npz                # rotacje Mixamo dla każdej kości
+├── mixamo_character.glb                # postać ze skinningiem, do importu w Blenderze / Unity
+└── videos/   lub   images/             # podglądy — zależnie od wejścia
+```
+
+**Wejście wideo** zapisuje `videos/` (te same proporcje obrazu co klip):
+
+```
+videos/
+├── human_skeleton.mp4                  # odtworzony szkielet 3D człowieka
+├── mixamo_skeleton.mp4                 # szkielet riga Mixamo
+├── mixamo_character.mp4                # postać Mixamo ze skinningiem
+└── compare.mp4                         # 2×2: oryginał (lewy górny) / szkielet Mixamo (prawy górny)
+                                        #      szkielet człowieka (lewy dolny) / postać (prawy dolny)
+```
+
+**Wejście ze zdjęcia** zapisuje zamiast tego `images/` (te same cztery widoki plus pełny obrót):
+
+```
+images/
+├── human_skeleton.png                  # odtworzony szkielet 3D człowieka
+├── mixamo_skeleton.png                 # szkielet riga Mixamo
+├── mixamo_character.png                # postać Mixamo ze skinningiem
+├── compare.png                         # 2×2: oryginał (lewy górny) / szkielet Mixamo (prawy górny)
+│                                       #      szkielet człowieka (lewy dolny) / postać (prawy dolny)
+└── before_after_360_compare.mp4        # lewo: oryginalne zdjęcie
+                                        # prawo: obrót wokół riga co 10° (pełny obrót)
+```
+
+Otwórz `mixamo_character.glb` w Blenderze: File → Import → glTF 2.0 (.glb/.gltf). Jeśli kamera patrzy w pustą przestrzeń, zaznacz mesh postaci i użyj View → Frame Selected. Skupisko kul na głowie i dłoniach to wyświetlanie kości, a nie mesh: w Outlinerze ukryj **Icosphere** i **armature**; pozostaw widoczny mesh ze skinningiem. Ustaw FPS sceny i ostatnią klatkę osi czasu zgodnie z `run.json` (`fps`, `n_frames`), aby odtwarzanie odpowiadało źródłu. Porównaj uruchomienie z wideo z `videos/mixamo_character.mp4`, a uruchomienie ze zdjęcia z `images/mixamo_character.png` lub klipem z obrotem.
+
+## Licencja
+
+Kod tego repozytorium jest objęty licencją Apache-2.0. Zasoby, które pobierasz samodzielnie, mają własne warunki i nie mogą być rozpowszechniane razem z tym repozytorium:
+
+- **SMPL-X**: dostęp kontrolowany przez MPI; domyślnie niekomercyjne badania / edukacja / sztuka; użycie komercyjne wymaga osobnej umowy
+- **Mixamo FBX**: można używać w wydanym produkcie; nie rozpowszechniaj surowego FBX jako paczki zasobów
+- **GVHMR i inne wagi modeli**: pobierane automatycznie do `weights/` przy pierwszym `m2mr run`, na licencjach poszczególnych projektów źródłowych
+
+## Kontakt
+
+Jeśli napotkasz problem, potrzebujesz pomocy w lokalnej instalacji albo chcesz porozmawiać o współpracy, napisz na adres:
+[maxliu2022sz@gmail.com](mailto:maxliu2022sz@gmail.com)

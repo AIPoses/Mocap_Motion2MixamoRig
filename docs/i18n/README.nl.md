@@ -1,0 +1,176 @@
+# Motion2MixamoRig
+
+<p align="center">
+  <a href="#vereisten"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
+  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
+</p>
+
+![Motion2MixamoRig](../assets/repo_poster.png)
+
+<p align="center">
+  <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a> · <a href="../../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.ar.md">العربية</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.fil.md">Filipino</a> · <a href="README.th.md">ไทย</a> · <a href="README.fr.md">Français</a> · <a href="README.es-MX.md">Español</a> · <a href="README.tr.md">Türkçe</a> · <a href="README.ne.md">नेपाली</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.pl.md">Polski</a> · Nederlands
+</p>
+
+Zet de beweging van een persoon in een video — of de pose op een foto — over op een 3D-personage dat met Adobe Mixamo is gerigd.
+
+Voor gameontwikkelaars: geef een actievideo met **één persoon** (of een foto) en een Mixamo-personage op; het levert previewvideo's en een geskind personagebestand (`.glb`) dat je direct in Blender of Unity kunt laden.
+
+> Motion2MixamoRig is momenteel experimenteel. Versie 0.1.0 is de command-line-pipeline. Deze repository bevat ook een Blender 4.2+ Extension die dezelfde pipeline in een externe Python-omgeving uitvoert. De add-on installeren en gebruiken: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+Agents moeten beginnen bij [`AGENTS.md`](../../AGENTS.md).
+
+https://github.com/user-attachments/assets/37c67642-f36c-4815-bcf3-028ed9546a2f
+
+<p align="center">
+  <sub>Open <a href="../assets/demo.mp4">demo.mp4</a> in deze repository.</sub>
+</p>
+
+Nog een demo:
+
+https://github.com/user-attachments/assets/073f20c8-7283-4209-98e8-f247228bfd56
+
+## Vereisten
+
+Python 3.11+. Maak na het clonen een virtualenv aan en installeer de afhankelijkheden; daarna is het commando `m2mr` beschikbaar:
+
+```bash
+git clone https://github.com/MaxLiu22/Motion2MixamoRig.git
+cd Motion2MixamoRig
+python -m venv .venv && source .venv/bin/activate
+
+# Installeer de afhankelijkheden en dit project. chumpy (een oud pakket in de
+# afhankelijkheidsketen) importeert pip in zijn setup-script en faalt daardoor met
+# "No module named 'pip'" in de standaard geïsoleerde build van pip. Installeer het
+# eerst met isolatie uitgeschakeld en installeer daarna dit project.
+pip install --upgrade pip setuptools wheel \
+  && pip install "numpy>=1.26" \
+  && pip install --no-build-isolation "chumpy==0.70" \
+  && pip install -e .
+```
+
+De inferentiegewichten (GVHMR enz.) worden in deze stap niet gedownload. De eerste `m2mr run` haalt ze op naar `weights/` (~5 GB, maar één keer).
+
+ffmpeg wordt aanbevolen (macOS: `brew install ffmpeg`, Ubuntu: `apt install ffmpeg`).
+De pipeline werkt ook zonder, maar de uitvoervideo's zijn dan **zonder geluid** en spelen niet af in een browser.
+
+## Voordat je start: zet deze bestanden in `assets/`
+
+Deze repository levert deze bestanden niet mee; je moet ze zelf ophalen. De bestandsnaam van SMPL-X moet exact overeenkomen met de tabel; de namen van FBX-, video- en afbeeldingsbestanden zijn vrij. Elke run heeft SMPL-X, een Mixamo-personage en **ofwel** een video **ofwel** een foto nodig.
+
+| Wat | Waar | Waar te krijgen |
+|---|---|---|
+| SMPL-X-lichaamsmodel | `assets/body_models/smplx/SMPLX_NEUTRAL.npz` | Registreer je op [SMPL-X](https://smpl-x.is.tue.mpg.de/) en download het |
+| FBX van een Mixamo-personage | `assets/mixamo/Y_Bot.fbx` | Download met een Adobe-account Y Bot (of een ander met Mixamo gerigd personage) van [Mixamo](https://www.mixamo.com) |
+| Actievideo | `assets/video/<your_clip>.mp4` | Een clip met **precies één** duidelijk zichtbare persoon, **de hele tijd van top tot teen in beeld** (je kunt meerdere bestanden bewaren; elke run gebruikt het laatst toegevoegde) |
+| Posefoto (optioneel) | `assets/image/<your_photo>.jpg` | Een foto met **precies één** duidelijk zichtbare persoon, **van top tot teen in beeld**. Te gebruiken met `--image` |
+
+Let op: het bestand dat je van Mixamo downloadt heet `Y Bot.fbx` (**met spatie**), één teken anders dan `Y_Bot.fbx` (**met underscore**) in de tabel.
+Hernoem het naar de vorm met underscore en het wordt de standaard-rig (`m2mr run` zonder `--rig`). De spatie laten staan werkt ook — als `Y_Bot.fbx` ontbreekt, wordt het eerste `.fbx`-bestand in `assets/mixamo/` gebruikt.
+
+`assets/video/` kan meerdere video's bevatten. Zonder `--video` of `--image` gebruikt de run het bestand dat **het laatst is toegevoegd** aan `assets/video/`; als die map leeg is, valt hij terug op de nieuwste foto in `assets/image/`.
+Elke clip of foto mag maar één persoon tonen, **van top tot teen in beeld** — niets afgesneden aan de randen. `m2mr doctor` / `m2mr run` stoppen vóór de extractie als er twee personen in beeld zijn.
+
+## Snel aan de slag
+
+Resultaten komen in `outputs/<run-time>_<source>/`. Runs met een video schrijven naar `videos/`; runs met een foto schrijven naar `images/`.
+
+### 1. Controleer de assets en de omgeving
+
+Alles wat ontbreekt wordt getoond, samen met waar je het kunt downloaden en waar je het moet neerzetten.
+
+```bash
+m2mr doctor
+```
+
+### 2. Eerste run: krijg iets op je scherm
+
+Zonder opties gebruikt dit **het nieuwste bestand in `assets/video/`** en `assets/mixamo/Y_Bot.fbx`.
+
+```bash
+m2mr run
+```
+
+Dit is de langzame stap. De eerste run downloadt ~5 GB aan inferentiegewichten (maar één keer) en haalt daarna de menselijke beweging uit de video.
+Op een CPU duurt de extractie van een clip van ~30 seconden ongeveer 8–15 minuten; latere runs van vergelijkbare lengte, met de gewichten al aanwezig, duren ongeveer 3–5 minuten.
+Retargeting en rendering duren meestal een minuut of twee. Een skelet hergebruiken met `--skeleton` in de volgende sectie slaat de extractie volledig over en is binnen enkele tientallen seconden klaar.
+
+### 3. Dezelfde beweging, een ander personage
+
+Download een ander personage van Mixamo naar `assets/mixamo/`. **Draai niet opnieuw met alleen `--rig`** — dan wordt de langzame extractie herhaald.
+Geef `--skeleton` mee om het skelet van een eerdere run te hergebruiken; minuten worden enkele tientallen seconden:
+
+```bash
+m2mr run --skeleton outputs/<previous-run-dir>/skeleton_motion.npz --rig assets/mixamo/Vampire.fbx
+```
+
+### 4. Een andere video
+
+`--video` kiest de clip. Het is vrij te combineren met `--rig`.
+
+```bash
+m2mr run --video assets/video/dance.mp4 --rig assets/mixamo/Vampire.fbx
+```
+
+### 5. Een foto (statische pose)
+
+`--image` reconstrueert een **statische 3D-pose** uit een foto van één persoon en zet die vervolgens op dezelfde manier als bij een videorun over op het Mixamo-personage. De previews zijn vier stilstaande beelden in `images/` (dezelfde weergaven als bij een videorun), plus een links/rechts draaiende orbitclip `before_after_360_compare.mp4`. Geef niet tegelijk `--video` mee.
+
+```bash
+m2mr run --image assets/image/pose.jpg
+m2mr run --image assets/image/pose.jpg --rig assets/mixamo/Vampire.fbx
+```
+
+`--image` zonder pad gebruikt het bestand dat het laatst is toegevoegd aan `assets/image/`.
+
+## Uitvoer
+
+Elke `m2mr run` maakt een map aan die is genoemd naar **het tijdstip waarop het commando startte**. De vier bestanden in de hoofdmap zijn hetzelfde voor video en foto; alleen de previewmap verschilt.
+
+```
+outputs/20260829_193205_dance/          # of …_pose/ voor een foto
+├── run.json                            # starttijd, invoer, volledig commando
+├── skeleton_motion.npz                 # 3D-skelet van de persoon (hergebruik met --skeleton)
+├── mixamo_rotations.npz                # Mixamo-rotaties per bot
+├── mixamo_character.glb                # geskind personage, te importeren in Blender / Unity
+└── videos/   of   images/              # previews — afhankelijk van de invoer
+```
+
+**Video-invoer** schrijft naar `videos/` (dezelfde beeldverhouding als de clip):
+
+```
+videos/
+├── human_skeleton.mp4                  # gereconstrueerd 3D-skelet van de persoon
+├── mixamo_skeleton.mp4                 # skelet van de Mixamo-rig
+├── mixamo_character.mp4                # geskind Mixamo-personage
+└── compare.mp4                         # 2×2: origineel (linksboven) / Mixamo-skelet (rechtsboven)
+                                        #      menselijk skelet (linksonder) / personage (rechtsonder)
+```
+
+**Foto-invoer** schrijft in plaats daarvan naar `images/` (dezelfde vier weergaven, plus een volledige rondgang):
+
+```
+images/
+├── human_skeleton.png                  # gereconstrueerd 3D-skelet van de persoon
+├── mixamo_skeleton.png                 # skelet van de Mixamo-rig
+├── mixamo_character.png                # geskind Mixamo-personage
+├── compare.png                         # 2×2: origineel (linksboven) / Mixamo-skelet (rechtsboven)
+│                                       #      menselijk skelet (linksonder) / personage (rechtsonder)
+└── before_after_360_compare.mp4        # links: originele foto
+                                        # rechts: orbit rond de rig in stappen van 10° (één volledige rondgang)
+```
+
+Open `mixamo_character.glb` in Blender: File → Import → glTF 2.0 (.glb/.gltf). Als de camera op een lege ruimte gericht is, selecteer dan de mesh van het personage en gebruik View → Frame Selected. Het cluster bollen op het hoofd en de handen is de weergave van de botten, niet de mesh: verberg in de Outliner **Icosphere** en de **armature**; laat de geskinde mesh zichtbaar. Stel de FPS van de scène en het laatste frame van de tijdlijn in op basis van `run.json` (`fps`, `n_frames`), zodat het afspelen overeenkomt met de bron. Vergelijk een videorun met `videos/mixamo_character.mp4`, een fotorun met `images/mixamo_character.png` of de orbitclip.
+
+## Licentie
+
+De code van deze repository valt onder Apache-2.0. De assets die je zelf downloadt hebben hun eigen voorwaarden en mogen niet samen met deze repo worden herverspreid:
+
+- **SMPL-X**: toegang via MPI; standaard niet-commercieel onderzoek / onderwijs / kunst; commercieel gebruik vereist een aparte overeenkomst
+- **Mixamo FBX**: mag in een uitgebracht product worden gebruikt; verspreid de ruwe FBX niet als assetpakket
+- **GVHMR en andere inferentiegewichten**: worden bij de eerste `m2mr run` automatisch gedownload naar `weights/`, onder de licentie van elk afzonderlijk bronproject
+
+## Contact
+
+Loop je tegen een probleem aan, heb je hulp nodig bij een lokale installatie of wil je praten over samenwerking, stuur dan een e-mail naar:
+[maxliu2022sz@gmail.com](mailto:maxliu2022sz@gmail.com)
