@@ -40,7 +40,8 @@ def _person_detector():
 
     export_gvhmr_env()
     ckpt = WEIGHTS / "yolo" / "yolov8x.pt"
-    _yolo = YOLO(str(ckpt) if ckpt.exists() else "yolov8n.pt")
+    # Fallback model goes under weights/ too, not into whatever the working directory is.
+    _yolo = YOLO(str(ckpt) if ckpt.exists() else str(WEIGHTS / "yolo" / "yolov8n.pt"))
     return _yolo
 
 
