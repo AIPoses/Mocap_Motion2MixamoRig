@@ -6,24 +6,73 @@ from typing import Any
 
 LANGS = ("en", "zh-CN", "ko", "ja", "de", "ru", "ar")
 
-# Blender EnumProperty identifiers cannot contain "-".
-PREF_TO_LANG = {
-    "en": "en",
-    "zh_CN": "zh-CN",
+# Languages whose strings live in locales/<module>.py. Modules for languages
+# already in LANGS only fill in keys that the _add() calls below leave in English.
+LOCALE_MODULES = {
+    "zh-TW": "zh_TW",
     "ko": "ko",
     "ja": "ja",
     "de": "de",
     "ru": "ru",
     "ar": "ar",
+    "vi": "vi",
+    "fil": "fil",
+    "th": "th",
+    "fr": "fr",
+    "es": "es",
+    "tr": "tr",
+    "ne": "ne",
+    "id": "id",
+    "pl": "pl",
+    "nl": "nl",
 }
 
+# Blender EnumProperty identifiers cannot contain "-".
+PREF_TO_LANG = {
+    "en": "en",
+    "zh_CN": "zh-CN",
+    "zh_TW": "zh-TW",
+    "ko": "ko",
+    "ja": "ja",
+    "de": "de",
+    "ru": "ru",
+    "ar": "ar",
+    "vi": "vi",
+    "fil": "fil",
+    "th": "th",
+    "fr": "fr",
+    "es": "es",
+    "tr": "tr",
+    "ne": "ne",
+    "id": "id",
+    "pl": "pl",
+    "nl": "nl",
+}
+
+# Blender / system locale prefix -> UI language. Traditional Chinese must come
+# before the plain "zh" catch-all (Blender uses zh_HANT, systems zh_TW / zh_HK).
 _BLENDER_PREFIX = (
+    ("zh_hant", "zh-TW"),
+    ("zh_tw", "zh-TW"),
+    ("zh_hk", "zh-TW"),
+    ("zh_mo", "zh-TW"),
     ("zh", "zh-CN"),
     ("ko", "ko"),
     ("ja", "ja"),
     ("de", "de"),
     ("ru", "ru"),
     ("ar", "ar"),
+    ("vi", "vi"),
+    ("fil", "fil"),
+    ("tl", "fil"),
+    ("th", "th"),
+    ("fr", "fr"),
+    ("es", "es"),
+    ("tr", "tr"),
+    ("ne", "ne"),
+    ("id", "id"),
+    ("pl", "pl"),
+    ("nl", "nl"),
 )
 
 STRINGS: dict[str, dict[str, str]] = {}
@@ -390,6 +439,46 @@ _STATUS_KEYS = {
     "cancelled": "status_cancelled",
     "import_failed": "status_import_failed",
 }
+
+# One-click runtime setup and first-run download (other languages: locales/*.py).
+_add("advanced", en="Advanced", **{"zh-CN": "高级设置"})
+_add("install_runtime", en="Install Runtime (one click)", **{"zh-CN": "一键安装运行环境"})
+_add("update_runtime", en="Update Runtime", **{"zh-CN": "更新运行环境"})
+_add("setup_hint", en="First time: install the runtime (downloads several GB)", **{"zh-CN": "首次使用：先安装运行环境（需下载数 GB）"})
+_add("setup_started", en="Installing the Motion2MixamoRig runtime…", **{"zh-CN": "正在安装 Motion2MixamoRig 运行环境…"})
+_add("setup_running", en="Installing runtime…", **{"zh-CN": "正在安装运行环境…"})
+_add("setup_done", en="Runtime installed", **{"zh-CN": "运行环境已安装"})
+_add("setup_failed", en="Runtime installation failed", **{"zh-CN": "运行环境安装失败"})
+_add("err_backend_missing", en="This add-on build does not include the Motion2MixamoRig code", **{"zh-CN": "这个插件包里缺少 Motion2MixamoRig 程序代码"})
+_add("choose_smplx", en="Choose SMPL-X Model…", **{"zh-CN": "选择 SMPL-X 模型文件…"})
+_add("smplx_found", en="SMPL-X model: found", **{"zh-CN": "SMPL-X 模型：已就绪"})
+_add("smplx_missing", en="SMPL-X model: missing — download SMPLX_NEUTRAL.npz from smpl-x.is.tue.mpg.de", **{"zh-CN": "SMPL-X 模型：缺失 — 请从 smpl-x.is.tue.mpg.de 下载 SMPLX_NEUTRAL.npz"})
+_add("smplx_copied", en="SMPL-X model copied to {path}", **{"zh-CN": "SMPL-X 模型已复制到 {path}"})
+_add("first_run_title", en="The first run takes a while — this is normal", **{"zh-CN": "首次运行会比较久，属于正常现象"})
+_add("first_run_body", en="It downloads ~5.6 GB of models and processes the video on this computer", **{"zh-CN": "需要下载约 5.6 GB 模型，并在本机处理视频"})
+_add("first_run_once", en="Models download only once; later runs are much faster", **{"zh-CN": "模型只下载一次，之后再运行会快很多"})
+_add("dl_title", en="First run: downloading models", **{"zh-CN": "首次运行：正在下载模型"})
+_add("dl_progress_fmt", en="{done} / {total} GB · {rate} MB/s · {eta}", **{"zh-CN": "{done} / {total} GB · {rate} MB/s · {eta}"})
+_add("dl_eta_unknown", en="measuring speed…", **{"zh-CN": "正在测速…"})
+_add("dl_eta_under_minute", en="under 1 min left", **{"zh-CN": "不到 1 分钟"})
+_add("dl_eta_minutes", en="~{minutes} min left", **{"zh-CN": "约剩 {minutes} 分钟"})
+
+
+def _load_locales() -> None:
+    """Merge locales/*.py over English, so a key missing from a locale shows in English."""
+    import importlib
+
+    for lang, module_name in LOCALE_MODULES.items():
+        try:
+            module = importlib.import_module(f".locales.{module_name}", __package__)
+        except ImportError:
+            continue
+        base = STRINGS.get(lang) or STRINGS["en"]
+        STRINGS[lang] = {**base, **getattr(module, "STRINGS", {})}
+
+
+_load_locales()
+
 
 _STAGE_KEYS = {
     "preflight": "stage_preflight",

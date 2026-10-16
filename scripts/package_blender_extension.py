@@ -28,6 +28,9 @@ REQUIRED_MANIFEST_FIELDS = (
     "license",
 )
 SKIP_NAMES = {".DS_Store", ".gitkeep"}
+# Motion2MixamoRig itself rides inside the zip under backend/, so the one-click
+# runtime setup installs exactly the code that matches this add-on version.
+BACKEND_ITEMS = ("motion2mixamorig", "pyproject.toml", "LICENSE", "NOTICE.md")
 
 
 def read_manifest(path: Path) -> dict[str, str]:
@@ -69,6 +72,11 @@ def build_zip(src: Path = SRC, dest: Path | None = None) -> Path:
     with zipfile.ZipFile(dest, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in iter_source_files(src):
             archive.write(path, path.relative_to(src).as_posix())
+        for name in BACKEND_ITEMS:
+            item = ROOT / name
+            files = iter_source_files(item) if item.is_dir() else [item]
+            for path in files:
+                archive.write(path, ("backend" / path.relative_to(ROOT)).as_posix())
     errors = validate_zip(dest)
     if errors:
         raise RuntimeError("invalid extension zip:\n" + "\n".join(errors))
@@ -85,6 +93,8 @@ def validate_zip(zip_path: Path) -> list[str]:
         errors.append("zip root is missing blender_manifest.toml")
     if "__init__.py" not in names:
         errors.append("zip root is missing __init__.py")
+    if "backend/motion2mixamorig/cli.py" not in names:
+        errors.append("zip is missing the bundled backend (backend/motion2mixamorig)")
     if any(name.startswith("motion2mixamorig_blender/") for name in names):
         errors.append("zip has an extra wrapping directory")
     if any(name.startswith("blender_extension/") for name in names):

@@ -84,6 +84,15 @@ class M2MR_OT_run_pipeline(Operator):
         props.job_id = job_id
         props.job_source_name = source.stem
 
+        from ..services.weights_download import DownloadTracker, weights_complete, weights_dir
+
+        weights = weights_dir(prefs.project_dir)
+        first_run = not weights_complete(weights)
+        props.dl_active = first_run
+        props.dl_done = 0.0
+        props.dl_rate = 0.0
+        props.dl_eta = -1.0
+
         attach(
             JobRuntime(
                 kind="run",
@@ -95,6 +104,7 @@ class M2MR_OT_run_pipeline(Operator):
                 log_file=log_file,
                 source_name=source.stem,
                 auto_import=True,
+                extra={"downloads": DownloadTracker(weights)} if first_run else {},
             )
         )
         self.report({"INFO"}, t("info_started_job", job=job_id))

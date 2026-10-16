@@ -75,6 +75,11 @@ class M2MRProperties(PropertyGroup):
     )
     env_message: StringProperty(name="Environment message", default="", maxlen=512)
 
+    setup_status: StringProperty(name="Runtime setup status", default="idle", maxlen=64)
+    setup_progress: FloatProperty(name="Runtime setup progress", default=0.0, min=0.0, max=1.0)
+    setup_message: StringProperty(name="Runtime setup message", default="", maxlen=512)
+    show_advanced: BoolProperty(name="Advanced", default=False)
+
     job_status: StringProperty(name="Job status", default="idle", maxlen=64)
     job_stage: StringProperty(name="Job stage", default="", maxlen=64)
     job_progress: FloatProperty(name="Progress", default=0.0, min=0.0, max=1.0)
@@ -85,6 +90,13 @@ class M2MRProperties(PropertyGroup):
     job_id: StringProperty(name="Job id", default="", maxlen=128)
     job_source_name: StringProperty(name="Source name", default="", maxlen=128)
     import_note: StringProperty(name="Import note", default="", maxlen=512)
+
+    # First-run model download, filled in by the job poller.
+    dl_active: BoolProperty(name="Downloading models", default=False)
+    dl_done: FloatProperty(name="Downloaded bytes", default=0.0)
+    dl_total: FloatProperty(name="Total bytes", default=0.0)
+    dl_rate: FloatProperty(name="Download speed (bytes/s)", default=0.0)
+    dl_eta: FloatProperty(name="Seconds left", default=-1.0)
 
 
 def register() -> None:

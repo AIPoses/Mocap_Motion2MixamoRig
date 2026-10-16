@@ -29,15 +29,14 @@ class M2MR_PT_main(Panel):
         busy = runtime is not None and not runtime.finished
 
         self._draw_setup(layout, prefs, props, busy)
-        self._draw_input(layout, props, busy)
+        self._draw_input(layout, prefs, props, busy)
         self._draw_progress(layout, props, busy)
 
     def _draw_setup(self, layout, prefs, props, busy: bool) -> None:
         box = layout.box()
         box.label(text=t("section_setup"))
         box.prop(prefs, "ui_language", text=t("ui_language"))
-        box.prop(prefs, "python_path", text=t("external_python"))
-        box.prop(prefs, "project_dir", text=t("project_directory"))
+        self._draw_runtime(box, prefs, props, busy)
         box.prop(props, "device", text=t("device"))
         row = box.row()
         row.enabled = not busy
@@ -46,13 +45,63 @@ class M2MR_PT_main(Panel):
         if props.env_message:
             box.label(text=localize(props.env_message))
 
-    def _draw_input(self, layout, props, busy: bool) -> None:
+        box.prop(
+            props,
+            "show_advanced",
+            text=t("advanced"),
+            icon="TRIA_DOWN" if props.show_advanced else "TRIA_RIGHT",
+            emboss=False,
+        )
+        if props.show_advanced:
+            box.prop(prefs, "python_path", text=t("external_python"))
+            box.prop(prefs, "project_dir", text=t("project_directory"))
+
+    def _draw_runtime(self, box, prefs, props, busy: bool) -> None:
+        from ..services.runtime_setup import default_home, installed_python
+
+        installed = installed_python(default_home()) is not None
+        sub = box.box()
+        if props.setup_status in {"running", "cancelling"}:
+            sub.label(text=t("setup_running"), icon="IMPORT")
+            try:
+                sub.progress(factor=float(props.setup_progress), type="BAR", text=props.setup_message[:80])
+            except Exception:
+                sub.label(text=props.setup_message[:96])
+            sub.operator("m2mr.cancel_job", text=t("cancel"), icon="X")
+            return
+        row = sub.row()
+        row.enabled = not busy
+        row.scale_y = 1.3
+        row.operator(
+            "m2mr.setup_runtime",
+            text=t("update_runtime") if installed else t("install_runtime"),
+            icon="FILE_REFRESH" if installed else "IMPORT",
+        )
+        if props.setup_status == "done":
+            sub.label(text=t("setup_done"), icon="CHECKMARK")
+        elif props.setup_status == "failed":
+            sub.label(text=t("setup_failed"), icon="ERROR")
+            if props.setup_message:
+                sub.label(text=props.setup_message[:96])
+        elif not installed:
+            sub.label(text=t("setup_hint"))
+
+        smplx = Path(prefs.project_dir) / "assets" / "body_models" / "smplx" if prefs.project_dir else None
+        found = bool(smplx) and any((smplx / name).is_file() for name in ("SMPLX_NEUTRAL.npz", "SMPLX_NEUTRAL.pkl"))
+        row = sub.row()
+        row.enabled = not busy
+        row.operator("m2mr.set_smplx", text=t("choose_smplx"), icon="CHECKMARK" if found else "FILE_BLANK")
+        sub.label(text=t("smplx_found") if found else t("smplx_missing"))
+
+    def _draw_input(self, layout, prefs, props, busy: bool) -> None:
         box = layout.box()
         box.label(text=t("section_input"))
         box.prop(props, "source_type", text=t("source_type"))
         box.prop(props, "source_path", text=t("source_file"))
         box.prop(props, "rig_path", text=t("mixamo_rig"))
         box.prop(props, "generate_preview", text=t("generate_preview"))
+        if not busy and _first_run(prefs):
+            _draw_first_run_note(box)
         row = box.row()
         row.enabled = not busy
         row.scale_y = 1.4
@@ -71,6 +120,8 @@ class M2MR_PT_main(Panel):
                 box.progress(factor=float(props.job_progress), type="BAR")
             except Exception:
                 box.prop(props, "job_progress", text=t("progress"), slider=True)
+            if props.dl_active:
+                _draw_download(box, props)
             log_path = Path(props.job_log_path) if props.job_log_path else None
             log = tail_text(log_path, max_lines=8) if log_path else ""
             if log:
@@ -102,6 +153,48 @@ class M2MR_PT_main(Panel):
             return
 
         box.label(text=t("no_job_yet"))
+
+
+def _first_run(prefs) -> bool:
+    """Model weights not downloaded yet (only known once the project directory is set)."""
+    from ..services.weights_download import weights_complete, weights_dir
+
+    if not prefs.project_dir:
+        return False
+    return not weights_complete(weights_dir(prefs.project_dir))
+
+
+def _draw_first_run_note(layout) -> None:
+    note = layout.box()
+    note.label(text=t("first_run_title"), icon="INFO")
+    note.label(text=t("first_run_body"))
+    note.label(text=t("first_run_once"))
+
+
+def _format_eta(seconds: float) -> str:
+    if seconds < 0:
+        return t("dl_eta_unknown")
+    if seconds < 60:
+        return t("dl_eta_under_minute")
+    return t("dl_eta_minutes", minutes=int(round(seconds / 60.0)))
+
+
+def _draw_download(layout, props) -> None:
+    sub = layout.box()
+    sub.label(text=t("dl_title"), icon="IMPORT")
+    total = props.dl_total or 1.0
+    text = t(
+        "dl_progress_fmt",
+        done=f"{props.dl_done / 1e9:.1f}",
+        total=f"{props.dl_total / 1e9:.1f}",
+        rate=f"{props.dl_rate / 1e6:.1f}",
+        eta=_format_eta(props.dl_eta),
+    )
+    try:
+        sub.progress(factor=min(1.0, props.dl_done / total), type="BAR", text=text)
+    except Exception:
+        sub.label(text=text)
+    sub.label(text=t("first_run_once"))
 
 
 def register() -> None:
