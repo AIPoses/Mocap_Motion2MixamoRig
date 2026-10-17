@@ -15,11 +15,26 @@ from ..services.backend import tail_text
 
 
 class M2MR_PT_main(Panel):
-    bl_label = "Motion2MixamoRig"
+    # Blender draws bl_label after draw_header(), so the title is drawn there
+    # instead, which lets the gear sit right after it.
+    bl_label = ""
     bl_idname = "M2MR_PT_main"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Motion2MixamoRig"
+
+    def draw_header(self, context: Context) -> None:
+        row = self.layout.row(align=True)
+        row.alignment = "LEFT"  # size items to their content instead of stretching
+        row.label(text="Motion2MixamoRig")
+        # Borderless gear right after the title: shows / hides the Setup box.
+        # A text glyph instead of icon="PREFERENCES": Blender icons have a fixed
+        # size, while the glyph follows the (smaller) header font.
+        # A text button keeps side padding; squeeze it so the glyph hugs the title.
+        # 0.6 measured in Blender 5.2: at 0.54 and below the glyph is clipped away.
+        gear = row.row(align=True)
+        gear.scale_x = 0.6
+        gear.prop(context.scene.m2mr, "show_setup", text="⚙", toggle=True, emboss=False)
 
     def draw(self, context: Context) -> None:
         layout = self.layout
@@ -28,7 +43,9 @@ class M2MR_PT_main(Panel):
         runtime = get_runtime()
         busy = runtime is not None and not runtime.finished
 
-        self._draw_setup(layout, prefs, props, busy)
+        # Keep Setup visible while the runtime installs: its progress bar lives there.
+        if props.show_setup or props.setup_status in {"running", "cancelling"}:
+            self._draw_setup(layout, prefs, props, busy)
         self._draw_input(layout, prefs, props, busy)
         self._draw_progress(layout, props, busy)
 
