@@ -65,7 +65,7 @@ When helping a user:
    it, click **Install Runtime (one click)**, then **Choose SMPL-X Model…**.
    Own-venv path: the same venv + SMPL-X + Mixamo FBX as the CLI (see Setup
    above).
-2. Build `dist/motion2mixamorig-0.1.6-<platform>.zip` with
+2. Build `dist/motion2mixamorig-0.1.7-<platform>.zip` with
    `python scripts/package_blender_extension.py --platform macos-arm64` (one
    zip per platform; the platform is declared in the zip's manifest, the
    version is shared; the zip bundles `motion2mixamorig/` under `backend/`
@@ -83,8 +83,8 @@ When helping a user:
    kept). If `already registered` / `EnumProperty could not register`
    appears: disable, **quit Blender fully**, reopen, install again.
 6. Jobs write `<project>/outputs/blender_jobs/<job-id>/`. After import, hide
-   **Icosphere** and the **armature** in the Outliner; leave **skinned_mesh**
-   visible. FPS must match the source clip duration (a 60 fps video tagged as
+   **Icosphere** and the **armature** in the Outliner; leave the
+   **skinned_mesh_…** objects (one per FBX geometry) visible. FPS must match the source clip duration (a 60 fps video tagged as
    30 fps plays at half speed).
 
 Smoke-test checklist: [`docs/blender-extension.md`](docs/blender-extension.md).
@@ -111,4 +111,5 @@ Each run writes `outputs/<YYYYMMDD_HHMMSS>_<source>/`:
 - `blender_extension/README.md` — build the add-on, one-click runtime internals, own-venv setup
 - `docs/user-guide.md` — add-on guide for non-programmers
 - `docs/blender-extension.md` — maintainer smoke-test checklist
-- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.6-<platform>.zip`
+- `docs/c4d-fbx-support.md` — how Cinema 4D-exported FBX rigs are read (bind-matrix rest pose, one GLB skin per mesh)
+- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.7-<platform>.zip`

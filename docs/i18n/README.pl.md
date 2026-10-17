@@ -16,7 +16,7 @@ Przenieś ruch osoby z nagrania wideo — albo pozę ze zdjęcia — na postać 
 
 Dla twórców gier: podaj nagranie akcji z **jedną osobą** (albo zdjęcie) i postać z Mixamo; narzędzie wygeneruje filmy podglądowe oraz plik postaci ze skinningiem (`.glb`), który możesz od razu wczytać do Blendera lub Unity.
 
-> Motion2MixamoRig jest na razie eksperymentalny. Wersja 0.1.6 to pipeline wiersza poleceń. To repozytorium zawiera też rozszerzenie Blender 4.2+ Extension, które uruchamia ten sam pipeline w zewnętrznym środowisku Pythona. Budowanie dodatku ze źródeł: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig jest na razie eksperymentalny. Wersja 0.1.7 to pipeline wiersza poleceń. To repozytorium zawiera też rozszerzenie Blender 4.2+ Extension, które uruchamia ten sam pipeline w zewnętrznym środowisku Pythona. Budowanie dodatku ze źródeł: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## Dwa sposoby użycia
 
@@ -72,7 +72,7 @@ Pipeline działa bez niego, ale wynikowe filmy będą **bez dźwięku** i nie od
 
 ## Zanim uruchomisz: umieść te pliki w `assets/`
 
-To repozytorium nie zawiera tych plików; musisz je pobrać samodzielnie. Nazwa pliku SMPL-X musi dokładnie odpowiadać tabeli; nazwy plików FBX, wideo i zdjęć są dowolne. Każde uruchomienie wymaga SMPL-X, postaci z Mixamo oraz **albo** wideo, **albo** zdjęcia.
+To repozytorium nie zawiera tych plików; musisz je pobrać samodzielnie. Nazwa pliku SMPL-X musi dokładnie odpowiadać tabeli; nazwy plików FBX, wideo i zdjęć są dowolne. Każde uruchomienie wymaga SMPL-X, postaci z Mixamo oraz **albo** wideo, **albo** zdjęcia. Postacie Mixamo ponownie wyeksportowane z Cinema 4D też działają; zobacz [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md).
 
 | Co | Gdzie | Skąd |
 |---|---|---|

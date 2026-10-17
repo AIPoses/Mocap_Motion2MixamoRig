@@ -16,7 +16,7 @@ Transfer the motion of a person in a video — or the pose in a still photo — 
 
 For game developers: give it a **single-person** action video (or a still) and a Mixamo character; it writes preview videos plus a skinned character file (`.glb`) you can drop into Blender or Unity.
 
-> Motion2MixamoRig is currently experimental. Version 0.1.6 is the command-line pipeline. This repository also includes a Blender 4.2+ Extension that runs that same pipeline in an external Python environment. Building the add-on from source: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig is currently experimental. Version 0.1.7 is the command-line pipeline. This repository also includes a Blender 4.2+ Extension that runs that same pipeline in an external Python environment. Building the add-on from source: [`blender_extension/README.md`](blender_extension/README.md).
 
 ## Two ways to use it
 
@@ -72,7 +72,7 @@ The pipeline runs without it, but the output videos will be **silent** and will 
 
 ## Before you run: put these in `assets/`
 
-This repository does not ship these files; you have to fetch them. The SMPL-X filename must match the table exactly; FBX, video, and image names can be anything. A run needs SMPL-X, a Mixamo character, and **either** a video **or** a still.
+This repository does not ship these files; you have to fetch them. The SMPL-X filename must match the table exactly; FBX, video, and image names can be anything. A run needs SMPL-X, a Mixamo character, and **either** a video **or** a still. Mixamo characters re-exported from Cinema 4D also work; see [`docs/c4d-fbx-support.md`](docs/c4d-fbx-support.md).
 
 | What | Where | Where to get it |
 |---|---|---|

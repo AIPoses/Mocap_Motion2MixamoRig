@@ -35,8 +35,9 @@ from .run_report import write_failed_report, write_run_json
 from .videos import render_run_images, render_run_videos
 
 ROTATION_CONVENTION = (
-    "Animation-channel rotations: M_local = T * Rpre * R_anim, world = parent @ local. "
-    "Quaternions are wxyz. FBX rest translations (T, Rpre) come from the rig file."
+    "Animation-channel rotations are rest-relative deltas: M_local = T_bind * R_bind * R_anim, "
+    "world = parent @ local. Quaternions are wxyz. Bind transforms prefer FBX Pose / "
+    "Cluster.TransformLink matrices, then fall back to local TRS."
 )
 
 

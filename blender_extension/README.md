@@ -89,7 +89,7 @@ From the repository root:
 python scripts/package_blender_extension.py --platform macos-arm64
 ```
 
-That writes `dist/motion2mixamorig-0.1.6-macos-arm64.zip`. The version comes
+That writes `dist/motion2mixamorig-0.1.7-macos-arm64.zip`. The version comes
 from `version` in `blender_manifest.toml` and is the same on every platform;
 the platform goes into the file name and into `platforms` in the zip’s copy of
 the manifest, so Blender refuses to install it on another OS. The source
@@ -98,7 +98,7 @@ manifest has no `platforms` line.
 - Platforms: `macos-arm64`, `macos-x64`, `windows-x64`, `windows-arm64`,
   `linux-x64`. Repeat `--platform` to build several zips at once.
 - Without `--platform` you get a platform-neutral
-  `dist/motion2mixamorig-0.1.6.zip` that installs anywhere. Use it for local
+  `dist/motion2mixamorig-0.1.7.zip` that installs anywhere. Use it for local
   testing only; releases ship per-platform zips.
 
 The zip root is `blender_manifest.toml` + `__init__.py` (no wrapping folder),
@@ -116,7 +116,7 @@ In Blender 4.2+:
 Command line:
 
 ```bash
-blender --command extension install-file --repo user_default --enable dist/motion2mixamorig-0.1.6-macos-arm64.zip
+blender --command extension install-file --repo user_default --enable dist/motion2mixamorig-0.1.7-macos-arm64.zip
 ```
 
 After you change the add-on code, rebuild the zip and install it again. The
@@ -174,7 +174,8 @@ one-click runtime, `<project>` is `~/Motion2MixamoRig/app`.
 - If the camera looks at empty space: select the character → **View → Frame Selected**.
 - The cluster of spheres on joints is bone display, not the mesh. In the
   Outliner, hide **Icosphere** and the **armature** (the row with pose /
-  armature / mesh icons). Leave **skinned_mesh** visible; it still deforms.
+  armature / mesh icons). Leave the **skinned_mesh_…** objects visible (one
+  per FBX geometry, e.g. `skinned_mesh_0_Alpha_Surface`); they still deform.
 - Playback speed follows the source clip’s duration (`fps` in `run.json`).
 
 ## Devices

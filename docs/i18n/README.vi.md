@@ -16,7 +16,7 @@ Chuyển chuyển động của một người trong video — hoặc tư thế 
 
 Dành cho nhà phát triển game: đưa vào một video hành động có **một người duy nhất** (hoặc một ảnh tĩnh) cùng một nhân vật Mixamo; công cụ sẽ xuất các video xem trước và một tệp nhân vật đã skin (`.glb`) để bạn kéo thẳng vào Blender hoặc Unity.
 
-> Motion2MixamoRig hiện vẫn đang ở giai đoạn thử nghiệm. Phiên bản 0.1.6 là pipeline dòng lệnh. Kho mã này cũng có một Blender 4.2+ Extension chạy chính pipeline đó trong một môi trường Python bên ngoài. Tự build add-on từ mã nguồn: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig hiện vẫn đang ở giai đoạn thử nghiệm. Phiên bản 0.1.7 là pipeline dòng lệnh. Kho mã này cũng có một Blender 4.2+ Extension chạy chính pipeline đó trong một môi trường Python bên ngoài. Tự build add-on từ mã nguồn: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## Hai cách sử dụng
 
@@ -72,7 +72,7 @@ Pipeline vẫn chạy được khi không có nó, nhưng video đầu ra sẽ *
 
 ## Trước khi chạy: đặt các tệp này vào `assets/`
 
-Kho mã này không kèm các tệp dưới đây; bạn phải tự tải về. Tên tệp SMPL-X phải khớp chính xác với bảng; tên tệp FBX, video và ảnh thì tùy ý. Mỗi lần chạy cần SMPL-X, một nhân vật Mixamo, và **hoặc** một video **hoặc** một ảnh tĩnh.
+Kho mã này không kèm các tệp dưới đây; bạn phải tự tải về. Tên tệp SMPL-X phải khớp chính xác với bảng; tên tệp FBX, video và ảnh thì tùy ý. Mỗi lần chạy cần SMPL-X, một nhân vật Mixamo, và **hoặc** một video **hoặc** một ảnh tĩnh. Nhân vật Mixamo được xuất lại từ Cinema 4D cũng dùng được; xem [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md).
 
 | Tệp | Vị trí | Nơi tải |
 |---|---|---|

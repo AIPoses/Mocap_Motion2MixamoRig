@@ -16,7 +16,7 @@ Pindahkan gerakan seseorang dalam video — atau pose dalam sebuah foto — ke k
 
 Untuk developer game: berikan video aksi dengan **satu orang saja** (atau sebuah foto) dan satu karakter Mixamo; alat ini akan menghasilkan video pratinjau serta file karakter yang sudah di-skin (`.glb`) yang bisa langsung kamu masukkan ke Blender atau Unity.
 
-> Motion2MixamoRig saat ini masih eksperimental. Versi 0.1.6 adalah pipeline baris perintah. Repositori ini juga menyertakan Blender 4.2+ Extension yang menjalankan pipeline yang sama di lingkungan Python eksternal. Membangun add-on dari source: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig saat ini masih eksperimental. Versi 0.1.7 adalah pipeline baris perintah. Repositori ini juga menyertakan Blender 4.2+ Extension yang menjalankan pipeline yang sama di lingkungan Python eksternal. Membangun add-on dari source: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## Dua cara memakainya
 
@@ -72,7 +72,7 @@ Pipeline tetap berjalan tanpanya, tetapi video hasilnya akan **tanpa suara** dan
 
 ## Sebelum menjalankan: taruh file-file ini di `assets/`
 
-Repositori ini tidak menyertakan file-file berikut; kamu harus mengambilnya sendiri. Nama file SMPL-X harus sama persis dengan tabel; nama file FBX, video, dan gambar bebas. Setiap run membutuhkan SMPL-X, satu karakter Mixamo, dan **salah satu** dari video **atau** foto.
+Repositori ini tidak menyertakan file-file berikut; kamu harus mengambilnya sendiri. Nama file SMPL-X harus sama persis dengan tabel; nama file FBX, video, dan gambar bebas. Setiap run membutuhkan SMPL-X, satu karakter Mixamo, dan **salah satu** dari video **atau** foto. Karakter Mixamo yang diekspor ulang dari Cinema 4D juga bisa dipakai; lihat [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md).
 
 | Apa | Di mana | Dari mana |
 |---|---|---|

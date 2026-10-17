@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-10-17
+
+### Added
+
+- Mixamo character FBXs re-exported from Cinema 4D are supported: the rest pose comes from the FBX bind matrices (`Pose`, then skin-cluster `TransformLink`, then local transforms) instead of `PreRotation` alone. See `docs/c4d-fbx-support.md`.
+- The user guide and the README quick start are available in all 18 README languages.
+
+### Changed
+
+- The GLB has one mesh node and skin per FBX geometry, so Blender imports one `skinned_mesh_…` object per mesh piece (Y Bot: two) instead of a single `skinned_mesh`. The armature is still named `mixamo`. Animation and deformation are unchanged.
+
+### Fixed
+
+- GLB export reused the first mesh's inverse-bind matrices for every mesh piece, which could separate or collapse a character whose pieces have different bind matrices.
+- `rest_skin_error_cm` compares in the same coordinate space as the skinned result, so it no longer reports a false error for meshes with their own bind transform.
+
 ## [0.1.6] - 2026-10-17
 
 ### Added

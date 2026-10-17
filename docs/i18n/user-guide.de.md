@@ -29,7 +29,7 @@ und lade die Zip-Datei für deinen Computer herunter:
 | Mac mit Apple Silicon (M1/M2/M3/M4) | `motion2mixamorig-<version>-macos-arm64.zip` |
 | Windows, Linux, Intel-Mac | Noch nicht verfügbar |
 
-Zum Beispiel `motion2mixamorig-0.1.6-macos-arm64.zip`: `0.1.6` ist die
+Zum Beispiel `motion2mixamorig-0.1.7-macos-arm64.zip`: `0.1.7` ist die
 Add-on-Version, `macos-arm64` die Plattform. Erwischst du die falsche Datei,
 verweigert Blender die Installation und nennt die erwartete Plattform.
 

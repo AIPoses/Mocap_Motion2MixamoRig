@@ -16,7 +16,7 @@
 
 ゲーム開発者向け：入力は**一人**の動作動画（または写真）と Mixamo キャラクター。プレビューと、Blender / Unity にそのまま入れられるスキン付きキャラクターファイル（`.glb`）を書き出します。
 
-> Motion2MixamoRig はまだ実験段階です。v0.1.6 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンをソースからビルドする方法：[`blender_extension/README.md`](../../blender_extension/README.md)。
+> Motion2MixamoRig はまだ実験段階です。v0.1.7 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンをソースからビルドする方法：[`blender_extension/README.md`](../../blender_extension/README.md)。
 
 ## 2 つの使い方
 
@@ -72,7 +72,7 @@ ffmpeg も推奨です（macOS: `brew install ffmpeg`、Ubuntu: `apt install ffm
 
 ## 実行前：これらを `assets/` に入れてください
 
-このリポジトリにはこれらのファイルは入っていません。自分で用意してください。SMPL-X のファイル名は下表と一字一句同じである必要があります。FBX、動画、写真の名前は何でも構いません。1 回の実行には SMPL-X、Mixamo キャラクター、そして**動画か写真のどちらか**が必要です。
+このリポジトリにはこれらのファイルは入っていません。自分で用意してください。SMPL-X のファイル名は下表と一字一句同じである必要があります。FBX、動画、写真の名前は何でも構いません。1 回の実行には SMPL-X、Mixamo キャラクター、そして**動画か写真のどちらか**が必要です。 Cinema 4D で再エクスポートした Mixamo キャラクターの FBX も使えます。詳しくは [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md) を参照してください。
 
 | 何を | どこへ | どこから |
 |---|---|---|

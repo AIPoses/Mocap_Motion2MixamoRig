@@ -16,7 +16,7 @@ Bir videodaki kişinin hareketini — ya da bir fotoğraftaki pozu — Adobe Mix
 
 Oyun geliştiricileri için: **tek kişilik** bir aksiyon videosu (ya da bir fotoğraf) ve bir Mixamo karakteri verin; araç önizleme videoları ile Blender veya Unity'ye doğrudan aktarabileceğiniz skin'lenmiş bir karakter dosyası (`.glb`) üretir.
 
-> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.6 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentiyi kaynak koddan derlemek için: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.7 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentiyi kaynak koddan derlemek için: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## İki kullanım yolu
 
@@ -72,7 +72,7 @@ Pipeline onsuz da çalışır, ancak çıktı videoları **sessiz** olur ve tara
 
 ## Çalıştırmadan önce: bunları `assets/` içine koyun
 
-Bu depo bu dosyaları içermez; kendiniz edinmeniz gerekir. SMPL-X dosya adı tabloyla birebir aynı olmalıdır; FBX, video ve görsel adları serbesttir. Her çalıştırma için SMPL-X, bir Mixamo karakteri ve **ya** bir video **ya da** bir fotoğraf gerekir.
+Bu depo bu dosyaları içermez; kendiniz edinmeniz gerekir. SMPL-X dosya adı tabloyla birebir aynı olmalıdır; FBX, video ve görsel adları serbesttir. Her çalıştırma için SMPL-X, bir Mixamo karakteri ve **ya** bir video **ya da** bir fotoğraf gerekir. Cinema 4D'den yeniden dışa aktarılan Mixamo karakterleri de desteklenir; ayrıntılar için [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md) dosyasına bakın.
 
 | Ne | Nereye | Nereden |
 |---|---|---|

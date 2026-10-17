@@ -29,7 +29,7 @@ dan unduh zip untuk komputermu:
 | Mac dengan Apple Silicon (M1/M2/M3/M4) | `motion2mixamorig-<version>-macos-arm64.zip` |
 | Windows, Linux, Mac Intel | Belum tersedia |
 
-Contohnya `motion2mixamorig-0.1.6-macos-arm64.zip`: `0.1.6` adalah versi
+Contohnya `motion2mixamorig-0.1.7-macos-arm64.zip`: `0.1.7` adalah versi
 add-on, `macos-arm64` adalah platformnya. Kalau kamu salah pilih, Blender akan
 menolak memasangnya dan menyebutkan platform yang seharusnya.
 

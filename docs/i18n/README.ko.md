@@ -16,7 +16,7 @@
 
 게임 개발자를 위한 도구입니다. **한 사람만** 나오는 동작 영상(또는 사진)과 Mixamo 캐릭터를 넣으면 미리보기와, Blender / Unity에 바로 넣을 수 있는 스키닝된 캐릭터 파일(`.glb`)을 생성합니다.
 
-> Motion2MixamoRig는 아직 실험 단계입니다. v0.1.6은 명령줄 파이프라인입니다. 이 저장소의 Blender 4.2+ Extension은 같은 파이프라인을 외부 Python에서 실행합니다. 소스에서 애드온 빌드하기: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig는 아직 실험 단계입니다. v0.1.7은 명령줄 파이프라인입니다. 이 저장소의 Blender 4.2+ Extension은 같은 파이프라인을 외부 Python에서 실행합니다. 소스에서 애드온 빌드하기: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## 두 가지 사용 방법
 
@@ -72,7 +72,7 @@ ffmpeg도 권장합니다(macOS: `brew install ffmpeg`, Ubuntu: `apt install ffm
 
 ## 실행 전: 이것을 `assets/`에 넣으세요
 
-이 저장소는 해당 파일을 포함하지 않습니다. 직접 준비해야 합니다. SMPL-X 파일명은 아래 표와 한 글자도 같아야 합니다. FBX, 영상, 사진 이름은 상관없습니다. 한 번의 실행에는 SMPL-X, Mixamo 캐릭터, 그리고 **영상 또는 사진 중 하나**가 필요합니다.
+이 저장소는 해당 파일을 포함하지 않습니다. 직접 준비해야 합니다. SMPL-X 파일명은 아래 표와 한 글자도 같아야 합니다. FBX, 영상, 사진 이름은 상관없습니다. 한 번의 실행에는 SMPL-X, Mixamo 캐릭터, 그리고 **영상 또는 사진 중 하나**가 필요합니다. Cinema 4D에서 다시 내보낸 Mixamo 캐릭터 FBX도 사용할 수 있습니다. 자세한 내용은 [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md)를 참고하세요.
 
 | 무엇 | 어디에 | 어디서 |
 |---|---|---|

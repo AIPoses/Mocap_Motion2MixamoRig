@@ -16,7 +16,7 @@ Ilipat ang galaw ng isang tao sa video — o ang pose sa isang still na larawan 
 
 Para sa mga game developer: bigyan ito ng action video na may **iisang tao** (o isang still) at isang Mixamo character; gagawa ito ng mga preview video at isang skinned na character file (`.glb`) na puwede mong ilagay agad sa Blender o Unity.
 
-> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.6 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Pag-build ng add-on mula sa source: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.7 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Pag-build ng add-on mula sa source: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ## Dalawang paraan para gamitin ito
 
@@ -72,7 +72,7 @@ Tatakbo ang pipeline kahit wala ito, pero **walang tunog** ang mga output video 
 
 ## Bago tumakbo: ilagay ang mga ito sa `assets/`
 
-Hindi kasama sa repository na ito ang mga file na ito; kailangan mo silang kunin. Dapat eksaktong tugma sa table ang filename ng SMPL-X; puwedeng kahit ano ang pangalan ng FBX, video, at larawan. Kailangan ng bawat run ang SMPL-X, isang Mixamo character, at **alinman sa** isang video **o** isang still.
+Hindi kasama sa repository na ito ang mga file na ito; kailangan mo silang kunin. Dapat eksaktong tugma sa table ang filename ng SMPL-X; puwedeng kahit ano ang pangalan ng FBX, video, at larawan. Kailangan ng bawat run ang SMPL-X, isang Mixamo character, at **alinman sa** isang video **o** isang still. Gumagana rin ang mga Mixamo character na ni-re-export mula sa Cinema 4D; tingnan ang [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md).
 
 | Ano | Saan ilalagay | Saan kukunin |
 |---|---|---|

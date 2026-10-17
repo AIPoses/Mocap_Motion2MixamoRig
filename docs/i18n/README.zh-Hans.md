@@ -16,7 +16,7 @@
 
 面向游戏开发者：输入一段**单人**动作视频（或一张人物照片）和一个 Mixamo 角色，输出预览视频，以及可直接丢进 Blender / Unity 的带皮角色文件（`.glb`）。
 
-> Motion2MixamoRig 目前仍处于实验阶段。v0.1.6 是命令行工作流。本仓库另有一个 Blender 4.2+ Extension，在外部 Python 里跑同一条 pipeline。从源码构建插件：[`blender_extension/README.md`](../../blender_extension/README.md)。
+> Motion2MixamoRig 目前仍处于实验阶段。v0.1.7 是命令行工作流。本仓库另有一个 Blender 4.2+ Extension，在外部 Python 里跑同一条 pipeline。从源码构建插件：[`blender_extension/README.md`](../../blender_extension/README.md)。
 
 ## 两种用法
 
@@ -71,7 +71,7 @@ pip install --upgrade pip setuptools wheel \
 
 ## 使用前：把这些东西放到 `assets/`
 
-本仓库不附带这些文件，需要你自己准备。SMPL-X 的文件名必须和下表一字不差；FBX、视频和照片叫什么都行。一次运行需要 SMPL-X、一个 Mixamo 角色，以及**视频或照片二选一**。
+本仓库不附带这些文件，需要你自己准备。SMPL-X 的文件名必须和下表一字不差；FBX、视频和照片叫什么都行。一次运行需要 SMPL-X、一个 Mixamo 角色，以及**视频或照片二选一**。 在 Cinema 4D 里重新导出的 Mixamo 角色 FBX 也可以使用，详见 [`docs/c4d-fbx-support.md`](../c4d-fbx-support.md)。
 
 | 放什么 | 放到哪 | 去哪拿 |
 |---|---|---|
