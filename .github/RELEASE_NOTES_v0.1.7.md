@@ -8,6 +8,8 @@ This release adds support for Mixamo characters that were edited and re-exported
 
 - **Cinema 4D-exported Mixamo FBX support**: use a character you opened and re-exported in Cinema 4D directly as the Mixamo rig, in the Blender add-on or with `--rig`. Details: [`docs/c4d-fbx-support.md`](https://github.com/MaxLiu22/Motion2MixamoRig/blob/v0.1.7/docs/c4d-fbx-support.md).
 - **Fixed characters falling apart in the GLB**: each mesh piece now keeps its own skin bind matrices.
+
+Both were contributed by [@yng47](https://github.com/yng47) in [#8](https://github.com/MaxLiu22/Motion2MixamoRig/issues/8). Thank you!
 - **User guide in 18 languages**, matching the README.
 
 ### What you will notice

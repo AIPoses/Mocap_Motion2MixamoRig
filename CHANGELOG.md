@@ -6,9 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.7] - 2026-10-17
 
+Tested on macOS (Apple Silicon) only; Windows and Linux are untested.
+
 ### Added
 
-- Mixamo character FBXs re-exported from Cinema 4D are supported: the rest pose comes from the FBX bind matrices (`Pose`, then skin-cluster `TransformLink`, then local transforms) instead of `PreRotation` alone. See `docs/c4d-fbx-support.md`.
+- Mixamo character FBXs re-exported from Cinema 4D are supported: the rest pose comes from the FBX bind matrices (`Pose`, then skin-cluster `TransformLink`, then local transforms) instead of `PreRotation` alone. See `docs/c4d-fbx-support.md`. Contributed by [@yng47](https://github.com/yng47) in [#8](https://github.com/MaxLiu22/Motion2MixamoRig/issues/8).
 - The user guide and the README quick start are available in all 18 README languages.
 
 ### Changed
@@ -17,7 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- GLB export reused the first mesh's inverse-bind matrices for every mesh piece, which could separate or collapse a character whose pieces have different bind matrices.
+- GLB export reused the first mesh's inverse-bind matrices for every mesh piece, which could separate or collapse a character whose pieces have different bind matrices. Contributed by [@yng47](https://github.com/yng47) in [#8](https://github.com/MaxLiu22/Motion2MixamoRig/issues/8).
 - `rest_skin_error_cm` compares in the same coordinate space as the skinned result, so it no longer reports a false error for meshes with their own bind transform.
 
 ## [0.1.6] - 2026-10-17
