@@ -22,7 +22,7 @@ For game developers: give it a **single-person** action video (or a still) and a
 
 ### 🎨 In Blender — no coding
 
-1. Download `motion2mixamorig-<version>.zip` from the [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+1. Download the zip for your platform, e.g. `motion2mixamorig-<version>-macos-arm64.zip`, from the [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
 2. In Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, pick the zip.
 3. 3D Viewport → press **N** → **Motion2MixamoRig** tab → **Install Runtime (one click)**.
 4. **Choose SMPL-X Model…** (a free download) and pick a Mixamo character FBX.

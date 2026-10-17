@@ -28,9 +28,12 @@
 - [ ] Release preparation commit is pushed
 - [ ] Annotated tag is created
 - [ ] Tag is pushed
-- [ ] Add-on zip is built: `python scripts/package_blender_extension.py`
-      → `dist/motion2mixamorig-<version>.zip`
-- [ ] GitHub Release is created from the tag, with the release notes and the
-      add-on zip attached
+- [ ] One add-on zip per tested platform:
+      `python scripts/package_blender_extension.py --platform macos-arm64`
+      → `dist/motion2mixamorig-<version>-macos-arm64.zip` (repeat
+      `--platform` for others). Ship only platforms that passed the smoke test;
+      never upload the platform-neutral test build.
+- [ ] GitHub Release is created from the tag, with the release notes and every
+      platform zip attached; the notes list which platforms are included
 - [ ] Release URL opens successfully, and
       `https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest` points to it

@@ -18,9 +18,16 @@ No coding or terminal needed.
 ## 1. Download the add-on
 
 Go to the [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest)
-and download `motion2mixamorig-<version>.zip` (for example
-`motion2mixamorig-0.1.6.zip`). The version in the file name is the add-on
-version.
+and download the zip for your computer:
+
+| Your computer | File |
+| --- | --- |
+| Mac with Apple Silicon (M1/M2/M3/M4) | `motion2mixamorig-<version>-macos-arm64.zip` |
+| Windows, Linux, Intel Mac | Not available yet |
+
+For example `motion2mixamorig-0.1.6-macos-arm64.zip`: `0.1.6` is the add-on
+version, `macos-arm64` the platform. If you pick the wrong one, Blender refuses
+to install it and names the platform it expected.
 
 Do **not** unzip it. Blender installs the zip itself.
 

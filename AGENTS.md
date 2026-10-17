@@ -65,9 +65,11 @@ When helping a user:
    it, click **Install Runtime (one click)**, then **Choose SMPL-X Model…**.
    Own-venv path: the same venv + SMPL-X + Mixamo FBX as the CLI (see Setup
    above).
-2. Build `dist/motion2mixamorig-0.1.6.zip` with
-   `python scripts/package_blender_extension.py` (the zip bundles
-   `motion2mixamorig/` under `backend/` for the one-click runtime).
+2. Build `dist/motion2mixamorig-0.1.6-<platform>.zip` with
+   `python scripts/package_blender_extension.py --platform macos-arm64` (one
+   zip per platform; the platform is declared in the zip's manifest, the
+   version is shared; the zip bundles `motion2mixamorig/` under `backend/`
+   for the one-click runtime). Without `--platform`: a neutral test build.
 3. In Blender 4.2+: **Edit → Preferences → Get Extensions**, then the **∨**
    next to Repositories → **Install from Disk…** (no large button). Enable it.
 4. The panel is **3D Viewport → N sidebar → Motion2MixamoRig**, not Get
@@ -109,4 +111,4 @@ Each run writes `outputs/<YYYYMMDD_HHMMSS>_<source>/`:
 - `blender_extension/README.md` — build the add-on, one-click runtime internals, own-venv setup
 - `docs/user-guide.md` — add-on guide for non-programmers
 - `docs/blender-extension.md` — maintainer smoke-test checklist
-- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.6.zip`
+- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.6-<platform>.zip`

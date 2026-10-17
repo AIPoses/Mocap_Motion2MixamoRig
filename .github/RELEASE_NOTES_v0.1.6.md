@@ -15,7 +15,7 @@ This release makes the Blender add-on usable without a terminal.
 
 ### Install the Blender add-on
 
-1. Download `motion2mixamorig-0.1.6.zip` from the assets below (do not unzip it).
+1. Download `motion2mixamorig-0.1.6-macos-arm64.zip` from the assets below (do not unzip it). This release has a macOS (Apple Silicon) build only; Windows and Linux builds will follow once they are tested.
 2. In Blender 4.2+: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**
 3. Follow the [User Guide](https://github.com/MaxLiu22/Motion2MixamoRig/blob/v0.1.6/docs/user-guide.md).
 

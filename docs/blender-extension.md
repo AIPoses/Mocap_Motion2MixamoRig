@@ -13,7 +13,7 @@ This page is the smoke-test checklist and the out-of-scope list.
 Run this on a clean user state: move `~/Motion2MixamoRig` aside first
 (`mv ~/Motion2MixamoRig ~/Motion2MixamoRig.bak`) and restore it afterwards.
 
-1. `python scripts/package_blender_extension.py`
+1. `python scripts/package_blender_extension.py --platform macos-arm64`
 2. Install the zip in Blender 4.2+ and enable the add-on; the version in
    **Get Extensions** matches the zip name.
 3. Confirm the **Motion2MixamoRig** tab in the 3D Viewport N-panel.
@@ -50,6 +50,10 @@ Run this on a clean user state: move `~/Motion2MixamoRig` aside first
 12. Disable and re-enable the add-on without a crash.
 
 ### Windows 10/11 (not tested yet)
+
+Build with `--platform windows-x64`. Known blocker for the one-click runtime:
+`cython-bbox` (pulled in by `gvhmr[preproc]`, unused at runtime) has no
+Windows wheel and needs a C compiler.
 
 1. One-click runtime: **Install Runtime** works, including paths with spaces
    (`C:\Users\Jane Doe\...`).

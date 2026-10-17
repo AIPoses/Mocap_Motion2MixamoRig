@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Blender add-on: UI in 18 languages, matching the README.
 - Blender add-on: a ⚙ toggle next to the panel title shows or hides Setup.
 - The add-on zip bundles the Motion2MixamoRig code that the one-click runtime installs.
+- Per-platform add-on zips: `scripts/package_blender_extension.py --platform <name>` writes `motion2mixamorig-<version>-<platform>.zip` and declares the platform in its manifest, so Blender refuses it on another OS. This release ships `macos-arm64` only.
 - User guide for using the add-on without coding (`docs/user-guide.md`), linked from the top of the README.
 
 ### Fixed
