@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-10-17
+
+### Added
+
+- Blender add-on: **Install Runtime (one click)** downloads Python and the dependencies into `~/Motion2MixamoRig`, so the add-on works without a terminal; **Update Runtime** refreshes the code and keeps the weights.
+- Blender add-on: **Choose SMPL-X Model…** copies the SMPL-X file into place.
+- Blender add-on: first-run notice, and model download progress with speed and time left.
+- Blender add-on: UI in 18 languages, matching the README.
+- Blender add-on: a ⚙ toggle next to the panel title shows or hides Setup.
+- The add-on zip bundles the Motion2MixamoRig code that the one-click runtime installs.
+- User guide for using the add-on without coding (`docs/user-guide.md`), linked from the top of the README.
+
+### Fixed
+
+- The original-video panel of `compare.mp4` played at half speed for non-30 fps clips.
+- The fallback YOLO weights were downloaded into the working directory instead of `weights/yolo/`.
+
 ## [0.1.5] - 2026-10-15
 
 ### Added

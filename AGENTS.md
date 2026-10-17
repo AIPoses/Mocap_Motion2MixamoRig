@@ -44,30 +44,42 @@ Extraction is the slow step; reuse it with `--skeleton` when only the rig change
 ## Blender Extension
 
 The add-on is a thin UI. It must **not** import PyTorch / GVHMR / OpenCV in
-Blender’s Python. It launches the user’s venv:
+Blender’s Python. It launches an external Python:
 
 ```text
 <external-python> -m motion2mixamorig.cli run ...
 ```
 
-How to install and use it (for the user, or to walk them through it):
-[`blender_extension/README.md`](blender_extension/README.md).
+That Python is either the **one-click runtime** the add-on installs into
+`~/Motion2MixamoRig` (default; project directory `~/Motion2MixamoRig/app`), or
+the user’s own venv set under **Advanced**.
+
+- Non-programmers: [`docs/user-guide.md`](docs/user-guide.md) (release zip,
+  one-click runtime, no terminal).
+- Building from source / own venv:
+  [`blender_extension/README.md`](blender_extension/README.md).
 
 When helping a user:
 
-1. They need the same venv + SMPL-X + Mixamo FBX as the CLI (see Setup above).
-2. Build `dist/motion2mixamorig-0.1.5.zip` with
-   `python scripts/package_blender_extension.py`.
+1. One-click path: download the zip from the latest GitHub release, install
+   it, click **Install Runtime (one click)**, then **Choose SMPL-X Model…**.
+   Own-venv path: the same venv + SMPL-X + Mixamo FBX as the CLI (see Setup
+   above).
+2. Build `dist/motion2mixamorig-0.1.6.zip` with
+   `python scripts/package_blender_extension.py` (the zip bundles
+   `motion2mixamorig/` under `backend/` for the one-click runtime).
 3. In Blender 4.2+: **Edit → Preferences → Get Extensions**, then the **∨**
    next to Repositories → **Install from Disk…** (no large button). Enable it.
 4. The panel is **3D Viewport → N sidebar → Motion2MixamoRig**, not Get
-   Extensions. Setup is the first box: UI Language, External Python
-   (`.venv/bin/python` or `Scripts\python.exe`, not Blender’s interpreter),
-   Project Directory, Device, then **Check Environment**.
+   Extensions. The **⚙** after the title shows / hides Setup. Setup: UI
+   Language, Install / Update Runtime, Choose SMPL-X Model, Device,
+   **Check Environment**; External Python and Project Directory are under
+   **Advanced**.
 5. After add-on **code** changes they must rebuild the zip and reinstall.
-   The installed copy is not live from this repo. If
-   `already registered` / `EnumProperty could not register` appears: disable,
-   **quit Blender fully**, reopen, install again.
+   The installed copy is not live from this repo. With the one-click runtime,
+   changes to `motion2mixamorig/` also need **Update Runtime** (weights are
+   kept). If `already registered` / `EnumProperty could not register`
+   appears: disable, **quit Blender fully**, reopen, install again.
 6. Jobs write `<project>/outputs/blender_jobs/<job-id>/`. After import, hide
    **Icosphere** and the **armature** in the Outliner; leave **skinned_mesh**
    visible. FPS must match the source clip duration (a 60 fps video tagged as
@@ -94,6 +106,7 @@ Each run writes `outputs/<YYYYMMDD_HHMMSS>_<source>/`:
 - `motion2mixamorig/pipeline.py` — one run end to end
 - `motion2mixamorig/cli.py` — `m2mr doctor` / `m2mr run`
 - `blender_extension/motion2mixamorig_blender/` — Blender 4.2+ Extension (UI + external process)
-- `blender_extension/README.md` — install and use the add-on
+- `blender_extension/README.md` — build the add-on, one-click runtime internals, own-venv setup
+- `docs/user-guide.md` — add-on guide for non-programmers
 - `docs/blender-extension.md` — maintainer smoke-test checklist
-- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.5.zip`
+- `scripts/package_blender_extension.py` — build `dist/motion2mixamorig-0.1.6.zip`

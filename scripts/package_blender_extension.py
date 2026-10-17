@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build dist/motion2mixamorig-0.1.5.zip for Blender 4.2+.
+"""Build dist/motion2mixamorig-0.1.6.zip for Blender 4.2+.
 
 The zip root contains blender_manifest.toml and __init__.py directly — no
 extra wrapping folder.
@@ -48,7 +48,7 @@ def read_manifest(path: Path) -> dict[str, str]:
 
 def extension_version(src: Path = SRC) -> str:
     manifest = read_manifest(src / "blender_manifest.toml")
-    return manifest.get("version", "0.1.5")
+    return manifest.get("version", "0.1.6")
 
 
 def should_include(path: Path) -> bool:

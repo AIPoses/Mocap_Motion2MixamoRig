@@ -16,7 +16,7 @@
 
 للمطوّرين في مجال الألعاب: قدّم فيديو حركة لـ**شخص واحد** (أو صورة) وشخصية Mixamo؛ يكتب معاينات وملف شخصية مكسوّة (`.glb`) يمكن وضعه في Blender أو Unity.
 
-> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.5 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. تثبيت الإضافة واستخدامها: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.6 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. تثبيت الإضافة واستخدامها: [`blender_extension/README.md`](../../blender_extension/README.md).
 
 ينبغي للوكلاء البرمجيين (Agents) البدء من [`AGENTS.md`](../../AGENTS.md).
 
