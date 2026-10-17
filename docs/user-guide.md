@@ -1,0 +1,148 @@
+# Motion2MixamoRig for Blender — User Guide
+
+Turn a video of one person into an animated Mixamo character, inside Blender.
+No coding or terminal needed.
+
+<!-- video: link the tutorial video here -->
+
+> Tested on **macOS (Apple Silicon)** so far. Windows and Linux have not been
+> tested yet.
+
+## What you need
+
+- **Blender 4.2 or newer**
+- **An internet connection** for the first setup
+- **About 8 GB of free disk space** (runtime ~1.3 GB + models ~5.6 GB)
+- **A free SMPL-X account** and **a free Adobe account** (for Mixamo); see steps 3 and 4
+
+## 1. Download the add-on
+
+Go to the [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest)
+and download `motion2mixamorig-<version>.zip` (for example
+`motion2mixamorig-0.1.6.zip`). The version in the file name is the add-on
+version.
+
+Do **not** unzip it. Blender installs the zip itself.
+
+## 2. Install it in Blender
+
+1. **Edit → Preferences → Get Extensions**
+2. Click the small **∨** at the top right → **Install from Disk…**
+3. Choose the zip. **Motion2MixamoRig** appears in the list, enabled.
+4. Close Preferences. In the 3D Viewport press **N**, then click the
+   **Motion2MixamoRig** tab on the right.
+
+<!-- screenshot: Install from Disk menu -->
+
+## 3. Install the runtime (one time)
+
+In the panel, click **Install Runtime (one click)**.
+
+The add-on downloads its own Python and libraries (~1.4 GB) into
+`~/Motion2MixamoRig/`. It does not touch anything else on your computer. This
+takes a few minutes; the progress bar shows the current step.
+
+<!-- screenshot: Install Runtime button and progress -->
+
+## 4. Get the SMPL-X body model
+
+SMPL-X is a free body model the add-on needs. Its license does not allow us to
+ship it, so you download it yourself, once:
+
+1. Open [smpl-x.is.tue.mpg.de](https://smpl-x.is.tue.mpg.de/) and **Register**.
+   Accept the license and confirm the email.
+2. Log in, open **Download**, and download the SMPL-X model (the **NPZ**
+   version).
+3. Unzip it and find **`SMPLX_NEUTRAL.npz`**.
+4. In Blender, click **Choose SMPL-X Model…** and pick that file. The panel
+   then shows **SMPL-X model: found**.
+
+<!-- screenshot: SMPL-X download page -->
+
+## 5. Get a Mixamo character
+
+1. Open [mixamo.com](https://www.mixamo.com/) and sign in with an Adobe account.
+2. **Characters** tab → pick a character (for example **Y Bot**).
+3. **Download** → Format **FBX Binary (.fbx)**, Pose **T-pose** → Download.
+
+<!-- screenshot: Mixamo download dialog -->
+
+## 6. Generate motion
+
+In the **Input** box:
+
+1. **Source Type**: Video (or Image for a single pose)
+2. **Source File**: your clip. It must show **exactly one person, head to toe
+   in frame the whole time**.
+3. **Mixamo Rig FBX**: the character from step 5
+4. Click **Generate Motion**
+
+When it finishes, the animated character is imported into your scene
+automatically.
+
+### The first run takes longer — this is normal
+
+The first time, the add-on downloads about **5.6 GB** of models. The panel
+shows the download size, speed, and time left. Models download only once.
+
+After that, the video is processed on your computer. On a Mac CPU, a
+10-second clip takes a few minutes. Blender stays usable while it runs, and
+**Cancel** stops the job.
+
+## Tips for good results
+
+- One person only, full body visible, not cut off at the edges
+- Steady camera, good light, plain clothes rather than loose or flowing ones
+- Short clips (5–20 seconds) are faster to try first
+
+## Update to a new version
+
+The add-on is updated often. To update:
+
+1. Download the newest zip from the
+   [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. **Get Extensions** → remove the old **Motion2MixamoRig**, quit Blender
+   fully (**Cmd+Q**), reopen, and install the new zip.
+3. In the panel, click **Update Runtime**.
+
+Updating keeps the downloaded models, so it is quick. Your installed version is
+shown next to the add-on in **Get Extensions**.
+
+## The panel
+
+- **⚙ next to the title** shows or hides the **Setup** box.
+- **Setup**: language, runtime, SMPL-X, device (CPU is the safe choice), and
+  **Check Environment**.
+- **Input**: what to animate.
+- **Progress / Result**: progress, recent log, and after a job
+  **Import Generated Character**, **Open Output Folder**, **View Full Log**.
+
+The add-on speaks 18 languages. **Auto** follows Blender's language; change it
+in the Setup box under **UI Language**.
+
+## If something goes wrong
+
+| What you see | What to do |
+| --- | --- |
+| Runtime installation failed | Check your internet connection and click the button again. Log: `~/Motion2MixamoRig/logs/setup.log` |
+| SMPL-X model: missing | Do step 4 again and pick `SMPLX_NEUTRAL.npz` |
+| Mixamo FBX invalid | Download the character again as **FBX Binary**, **T-pose** |
+| Input contains multiple people | Use a clip with only one person |
+| No person was detected | Make sure the whole body is visible and well lit |
+| Pipeline process exited unexpectedly | Click **View Full Log** |
+
+When you ask for help, attach the log and say which add-on version you use.
+
+## Uninstall
+
+1. **Get Extensions** → remove **Motion2MixamoRig**.
+2. Delete the folder **`~/Motion2MixamoRig`** (your home folder →
+   `Motion2MixamoRig`). Removing the add-on does **not** delete it, and it
+   holds about 7 GB of runtime and models, plus your generated results in
+   `app/outputs/`.
+
+## License
+
+Motion2MixamoRig is for **non-commercial use only**: it relies on research
+models (such as GVHMR and SMPL-X) whose licenses do not allow commercial use.
+See [`NOTICE.md`](../NOTICE.md).

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#prerequisites"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="docs/user-guide.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Transfer the motion of a person in a video — or the pose in a still photo — 
 
 For game developers: give it a **single-person** action video (or a still) and a Mixamo character; it writes preview videos plus a skinned character file (`.glb`) you can drop into Blender or Unity.
 
-> Motion2MixamoRig is currently experimental. Version 0.1.5 is the command-line pipeline. This repository also includes a Blender 4.2+ Extension that runs that same pipeline in an external Python environment. How to install and use the add-on: [`blender_extension/README.md`](blender_extension/README.md).
+> Motion2MixamoRig is currently experimental. Version 0.1.5 is the command-line pipeline. This repository also includes a Blender 4.2+ Extension that runs that same pipeline in an external Python environment. Building the add-on from source: [`blender_extension/README.md`](blender_extension/README.md).
+
+## Two ways to use it
+
+### 🎨 In Blender — no coding
+
+1. Download `motion2mixamorig-<version>.zip` from the [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. In Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, pick the zip.
+3. 3D Viewport → press **N** → **Motion2MixamoRig** tab → **Install Runtime (one click)**.
+4. **Choose SMPL-X Model…** (a free download) and pick a Mixamo character FBX.
+5. Choose a video of one person → **Generate Motion**.
+
+Step-by-step instructions, tips, and updating: **[User Guide](docs/user-guide.md)**. Tested on macOS (Apple Silicon).
+
+### 💻 Command line — for developers
+
+Clone the repository and run the pipeline yourself: start at [Prerequisites](#prerequisites).
 
 Agents should start with [`AGENTS.md`](AGENTS.md).
 
