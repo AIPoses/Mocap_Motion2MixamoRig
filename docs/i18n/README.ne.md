@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#आवश्यकताहरू"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.ne.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 गेम डेभलपरहरूका लागि: **एक जना मात्र** व्यक्ति भएको एक्सन भिडियो (वा एउटा फोटो) र एउटा Mixamo क्यारेक्टर दिनुहोस्; यसले प्रिभ्यु भिडियोहरू र skin गरिएको क्यारेक्टर फाइल (`.glb`) बनाउँछ, जुन तपाईं सिधै Blender वा Unity मा राख्न सक्नुहुन्छ।
 
-> Motion2MixamoRig अहिले प्रयोगात्मक चरणमा छ। संस्करण 0.1.6 कमान्ड-लाइन pipeline हो। यो रिपोजिटरीमा उही pipeline लाई बाहिरी Python वातावरणमा चलाउने Blender 4.2+ Extension पनि समावेश छ। एड-अन कसरी इन्स्टल र प्रयोग गर्ने: [`blender_extension/README.md`](../../blender_extension/README.md)।
+> Motion2MixamoRig अहिले प्रयोगात्मक चरणमा छ। संस्करण 0.1.6 कमान्ड-लाइन pipeline हो। यो रिपोजिटरीमा उही pipeline लाई बाहिरी Python वातावरणमा चलाउने Blender 4.2+ Extension पनि समावेश छ। सोर्सबाट एड-अन build गर्ने: [`blender_extension/README.md`](../../blender_extension/README.md)।
+
+## प्रयोग गर्ने दुई तरिका
+
+### 🎨 Blender मा — कोडिङ बिना
+
+1. आफ्नो प्लेटफर्मको zip, जस्तै `motion2mixamorig-<version>-macos-arm64.zip`, [पछिल्लो release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest) बाट डाउनलोड गर्नुहोस्।
+2. Blender मा: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, अनि zip छान्नुहोस्।
+3. 3D Viewport → **N** थिच्नुहोस् → **Motion2MixamoRig** ट्याब → **रनटाइम इन्स्टल गर्नुहोस् (एक क्लिक)** (Install Runtime (one click))।
+4. **SMPL-X मोडेल छान्नुहोस्…** (Choose SMPL-X Model…) (निःशुल्क डाउनलोड), र Mixamo क्यारेक्टरको FBX छान्नुहोस्।
+5. एक जना व्यक्ति भएको भिडियो छान्नुहोस् → **चाल बनाउनुहोस्** (Generate Motion)।
+
+चरण-दर-चरण निर्देशन, सुझाव र अपडेट: **[प्रयोगकर्ता गाइड](user-guide.ne.md)**। macOS (Apple Silicon) मा परीक्षण गरिएको।
+
+### 💻 कमान्ड लाइन — डेभलपरहरूका लागि
+
+रिपोजिटरी clone गरेर pipeline आफैँ चलाउनुहोस्: [आवश्यकताहरू](#आवश्यकताहरू) बाट सुरु गर्नुहोस्।
 
 Agent हरूले [`AGENTS.md`](../../AGENTS.md) बाट सुरु गर्नुपर्छ।
 

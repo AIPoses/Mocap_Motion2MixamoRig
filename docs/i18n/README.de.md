@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#voraussetzungen"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.de.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 Für Spieleentwickler: ein Video mit **genau einer Person** (oder ein Still) und ein Mixamo-Charakter; Ausgabe sind Vorschauen plus eine Charakterdatei mit Skinning (`.glb`) für Blender oder Unity.
 
-> Motion2MixamoRig ist noch experimentell. Version 0.1.6 ist die Kommandozeilen-Pipeline. In diesem Repository liegt außerdem eine Blender-4.2+-Extension, die dieselbe Pipeline in einem externen Python ausführt. Installation und Bedienung des Add-ons: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig ist noch experimentell. Version 0.1.6 ist die Kommandozeilen-Pipeline. In diesem Repository liegt außerdem eine Blender-4.2+-Extension, die dieselbe Pipeline in einem externen Python ausführt. Add-on aus dem Quellcode bauen: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Zwei Wege zur Nutzung
+
+### 🎨 In Blender — ohne Programmieren
+
+1. Lade die Zip-Datei für deine Plattform, z. B. `motion2mixamorig-<version>-macos-arm64.zip`, aus dem [neuesten Release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest) herunter.
+2. In Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, dann die Zip-Datei wählen.
+3. 3D Viewport → **N** drücken → Tab **Motion2MixamoRig** → **Laufzeitumgebung installieren (ein Klick)** (Install Runtime (one click)).
+4. **SMPL-X-Modell wählen…** (Choose SMPL-X Model…; kostenloser Download) und eine Mixamo-Charakter-FBX wählen.
+5. Ein Video mit einer Person wählen → **Motion erzeugen** (Generate Motion).
+
+Schritt-für-Schritt-Anleitung, Tipps und Aktualisieren: **[Benutzerhandbuch](user-guide.de.md)**. Getestet unter macOS (Apple Silicon).
+
+### 💻 Kommandozeile — für Entwickler
+
+Repository klonen und die Pipeline selbst ausführen: Beginne bei den [Voraussetzungen](#voraussetzungen).
 
 Agents beginnen mit [`AGENTS.md`](../../AGENTS.md).
 

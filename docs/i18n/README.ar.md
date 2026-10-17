@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#المتطلبات"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.ar.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 للمطوّرين في مجال الألعاب: قدّم فيديو حركة لـ**شخص واحد** (أو صورة) وشخصية Mixamo؛ يكتب معاينات وملف شخصية مكسوّة (`.glb`) يمكن وضعه في Blender أو Unity.
 
-> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.6 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. تثبيت الإضافة واستخدامها: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig لا يزال تجريبيًا. الإصدار 0.1.6 هو مسار سطر الأوامر. يضم هذا المستودع أيضًا امتداد Blender 4.2+ يشغّل المسار نفسه في Python خارجي. بناء الإضافة من المصدر: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## طريقتان للاستخدام
+
+### 🎨 داخل Blender — دون برمجة
+
+1. نزّل ملف zip الخاص بمنصتك، مثل `motion2mixamorig-<version>-macos-arm64.zip`، من [أحدث إصدار](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. في Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**، واختر ملف zip.
+3. 3D Viewport → اضغط **N** → تبويب **Motion2MixamoRig** → **تثبيت بيئة التشغيل (بنقرة واحدة)** (Install Runtime (one click)).
+4. **اختر نموذج SMPL-X…** (Choose SMPL-X Model…) (تنزيل مجاني)، واختر ملف FBX لشخصية Mixamo.
+5. اختر فيديو لشخص واحد → **توليد الحركة** (Generate Motion).
+
+التعليمات خطوة بخطوة والنصائح والتحديث: **[دليل المستخدم](user-guide.ar.md)**. جُرّب على macOS (Apple Silicon).
+
+### 💻 سطر الأوامر — للمطوّرين
+
+استنسخ المستودع وشغّل المسار بنفسك: ابدأ من [المتطلبات](#المتطلبات).
 
 ينبغي للوكلاء البرمجيين (Agents) البدء من [`AGENTS.md`](../../AGENTS.md).
 

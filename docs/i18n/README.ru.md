@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#требования"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.ru.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 Для разработчиков игр: видео с **одним человеком** (или фото) и персонаж Mixamo; на выходе превью и файл персонажа со скином (`.glb`) для Blender или Unity.
 
-> Motion2MixamoRig пока экспериментален. Версия 0.1.6 — конвейер командной строки. В этом репозитории также есть расширение Blender 4.2+, которое запускает тот же конвейер во внешнем Python. Установка и использование аддона: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig пока экспериментален. Версия 0.1.6 — конвейер командной строки. В этом репозитории также есть расширение Blender 4.2+, которое запускает тот же конвейер во внешнем Python. Сборка аддона из исходников: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Два способа использования
+
+### 🎨 В Blender — без программирования
+
+1. Скачайте zip для своей платформы, например `motion2mixamorig-<version>-macos-arm64.zip`, из [последнего релиза](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. В Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, выберите zip.
+3. 3D Viewport → нажмите **N** → вкладка **Motion2MixamoRig** → **Установить среду (в один клик)** (Install Runtime (one click)).
+4. **Выбрать модель SMPL-X…** (Choose SMPL-X Model…) (бесплатная загрузка) и выберите FBX персонажа Mixamo.
+5. Выберите видео с одним человеком → **Сгенерировать движение** (Generate Motion).
+
+Пошаговые инструкции, советы и обновление: **[Руководство пользователя](user-guide.ru.md)**. Проверено на macOS (Apple Silicon).
+
+### 💻 Командная строка — для разработчиков
+
+Клонируйте репозиторий и запускайте конвейер сами: начните с раздела [Требования](#требования).
 
 Агентам следует начать с [`AGENTS.md`](../../AGENTS.md).
 

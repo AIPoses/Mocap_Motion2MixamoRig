@@ -1,5 +1,9 @@
 # Motion2MixamoRig for Blender — User Guide
 
+<p align="center">
+  <a href="i18n/user-guide.zh-Hans.md">简体中文</a> · <a href="i18n/user-guide.zh-Hant.md">繁體中文</a> · English · <a href="i18n/user-guide.ko.md">한국어</a> · <a href="i18n/user-guide.ja.md">日本語</a> · <a href="i18n/user-guide.de.md">Deutsch</a> · <a href="i18n/user-guide.ru.md">Русский</a> · <a href="i18n/user-guide.ar.md">العربية</a> · <a href="i18n/user-guide.vi.md">Tiếng Việt</a> · <a href="i18n/user-guide.fil.md">Filipino</a> · <a href="i18n/user-guide.th.md">ไทย</a> · <a href="i18n/user-guide.fr.md">Français</a> · <a href="i18n/user-guide.es-MX.md">Español</a> · <a href="i18n/user-guide.tr.md">Türkçe</a> · <a href="i18n/user-guide.ne.md">नेपाली</a> · <a href="i18n/user-guide.id.md">Bahasa Indonesia</a> · <a href="i18n/user-guide.pl.md">Polski</a> · <a href="i18n/user-guide.nl.md">Nederlands</a>
+</p>
+
 Turn a video of one person into an animated Mixamo character, inside Blender.
 No coding or terminal needed.
 
@@ -13,7 +17,7 @@ No coding or terminal needed.
 - **Blender 4.2 or newer**
 - **An internet connection** for the first setup
 - **About 8 GB of free disk space** (runtime ~1.3 GB + models ~5.6 GB)
-- **A free SMPL-X account** and **a free Adobe account** (for Mixamo); see steps 3 and 4
+- **A free SMPL-X account** and **a free Adobe account** (for Mixamo); see steps 4 and 5
 
 ## 1. Download the add-on
 

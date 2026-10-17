@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#requisitos"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.es-MX.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Transfiere el movimiento de una persona en un video — o la pose de una foto fi
 
 Para desarrolladores de videojuegos: dale un video de acción con **una sola persona** (o una foto) y un personaje de Mixamo; genera videos de vista previa y un archivo de personaje con skinning (`.glb`) que puedes llevar directo a Blender o Unity.
 
-> Motion2MixamoRig todavía es experimental. La versión 0.1.6 es el pipeline de línea de comandos. Este repositorio también incluye una extensión para Blender 4.2+ que ejecuta ese mismo pipeline en un entorno de Python externo. Cómo instalar y usar el complemento: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig todavía es experimental. La versión 0.1.6 es el pipeline de línea de comandos. Este repositorio también incluye una extensión para Blender 4.2+ que ejecuta ese mismo pipeline en un entorno de Python externo. Cómo compilar el complemento desde el código fuente: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Dos formas de usarlo
+
+### 🎨 En Blender — sin programar
+
+1. Descarga el zip para tu plataforma, p. ej. `motion2mixamorig-<version>-macos-arm64.zip`, desde el [release más reciente](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. En Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…** y elige el zip.
+3. 3D Viewport → presiona **N** → pestaña **Motion2MixamoRig** → **Instalar entorno (un clic)** (Install Runtime (one click)).
+4. **Elegir modelo SMPL-X…** (Choose SMPL-X Model…) (una descarga gratuita) y elige un FBX de personaje de Mixamo.
+5. Elige un video de una persona → **Generar movimiento** (Generate Motion).
+
+Instrucciones paso a paso, consejos y cómo actualizar: **[Guía de usuario](user-guide.es-MX.md)**. Probado en macOS (Apple Silicon).
+
+### 💻 Línea de comandos — para desarrolladores
+
+Clona el repositorio y ejecuta el pipeline tú mismo: empieza por [Requisitos](#requisitos).
 
 Los agentes deben empezar por [`AGENTS.md`](../../AGENTS.md).
 

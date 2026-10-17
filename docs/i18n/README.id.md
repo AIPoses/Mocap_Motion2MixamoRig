@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#prasyarat"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.id.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Pindahkan gerakan seseorang dalam video — atau pose dalam sebuah foto — ke k
 
 Untuk developer game: berikan video aksi dengan **satu orang saja** (atau sebuah foto) dan satu karakter Mixamo; alat ini akan menghasilkan video pratinjau serta file karakter yang sudah di-skin (`.glb`) yang bisa langsung kamu masukkan ke Blender atau Unity.
 
-> Motion2MixamoRig saat ini masih eksperimental. Versi 0.1.6 adalah pipeline baris perintah. Repositori ini juga menyertakan Blender 4.2+ Extension yang menjalankan pipeline yang sama di lingkungan Python eksternal. Cara memasang dan menggunakan add-on: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig saat ini masih eksperimental. Versi 0.1.6 adalah pipeline baris perintah. Repositori ini juga menyertakan Blender 4.2+ Extension yang menjalankan pipeline yang sama di lingkungan Python eksternal. Membangun add-on dari source: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Dua cara memakainya
+
+### 🎨 Di Blender — tanpa coding
+
+1. Unduh zip untuk platformmu, misalnya `motion2mixamorig-<version>-macos-arm64.zip`, dari [rilis terbaru](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. Di Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, pilih zip-nya.
+3. 3D Viewport → tekan **N** → tab **Motion2MixamoRig** → **Pasang Runtime (sekali klik)** (Install Runtime (one click)).
+4. **Pilih Model SMPL-X…** (Choose SMPL-X Model…) (unduhan gratis) dan pilih FBX karakter Mixamo.
+5. Pilih video satu orang → **Buat Gerakan** (Generate Motion).
+
+Petunjuk langkah demi langkah, tips, dan cara update: **[Panduan Pengguna](user-guide.id.md)**. Sudah diuji di macOS (Apple Silicon).
+
+### 💻 Baris perintah — untuk developer
+
+Clone repositori ini dan jalankan pipeline-nya sendiri: mulai dari [Prasyarat](#prasyarat).
 
 Agent sebaiknya mulai dari [`AGENTS.md`](../../AGENTS.md).
 

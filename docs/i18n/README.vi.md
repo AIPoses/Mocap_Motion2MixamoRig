@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#yêu-cầu"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.vi.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Chuyển chuyển động của một người trong video — hoặc tư thế 
 
 Dành cho nhà phát triển game: đưa vào một video hành động có **một người duy nhất** (hoặc một ảnh tĩnh) cùng một nhân vật Mixamo; công cụ sẽ xuất các video xem trước và một tệp nhân vật đã skin (`.glb`) để bạn kéo thẳng vào Blender hoặc Unity.
 
-> Motion2MixamoRig hiện vẫn đang ở giai đoạn thử nghiệm. Phiên bản 0.1.6 là pipeline dòng lệnh. Kho mã này cũng có một Blender 4.2+ Extension chạy chính pipeline đó trong một môi trường Python bên ngoài. Cách cài đặt và sử dụng add-on: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig hiện vẫn đang ở giai đoạn thử nghiệm. Phiên bản 0.1.6 là pipeline dòng lệnh. Kho mã này cũng có một Blender 4.2+ Extension chạy chính pipeline đó trong một môi trường Python bên ngoài. Tự build add-on từ mã nguồn: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Hai cách sử dụng
+
+### 🎨 Trong Blender — không cần lập trình
+
+1. Tải tệp zip cho nền tảng của bạn, ví dụ `motion2mixamorig-<version>-macos-arm64.zip`, từ [bản phát hành mới nhất](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. Trong Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, chọn tệp zip.
+3. 3D Viewport → nhấn **N** → tab **Motion2MixamoRig** → **Cài runtime (một cú nhấp)** (Install Runtime (one click)).
+4. **Chọn mô hình SMPL-X…** (Choose SMPL-X Model…) (tải miễn phí) và chọn một tệp FBX nhân vật Mixamo.
+5. Chọn một video có một người → **Tạo chuyển động** (Generate Motion).
+
+Hướng dẫn từng bước, mẹo và cách cập nhật: **[Hướng dẫn sử dụng](user-guide.vi.md)**. Đã kiểm thử trên macOS (Apple Silicon).
+
+### 💻 Dòng lệnh — dành cho nhà phát triển
+
+Clone kho mã và tự chạy pipeline: bắt đầu từ [Yêu cầu](#yêu-cầu).
 
 Agent nên bắt đầu từ [`AGENTS.md`](../../AGENTS.md).
 

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#สิ่งที่ต้องมี"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.th.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 สำหรับนักพัฒนาเกม: ใส่วิดีโอแอ็กชันที่มี **คนเพียงคนเดียว** (หรือภาพนิ่ง) กับตัวละคร Mixamo หนึ่งตัว เครื่องมือจะสร้างวิดีโอพรีวิวและไฟล์ตัวละครที่ skin แล้ว (`.glb`) ซึ่งนำไปใช้ใน Blender หรือ Unity ได้ทันที
 
-> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.6 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย วิธีติดตั้งและใช้งาน add-on: [`blender_extension/README.md`](../../blender_extension/README.md)
+> ขณะนี้ Motion2MixamoRig ยังอยู่ในขั้นทดลอง เวอร์ชัน 0.1.6 คือ pipeline แบบบรรทัดคำสั่ง รีโพนี้ยังมี Blender 4.2+ Extension ที่รัน pipeline เดียวกันใน Python environment ภายนอกด้วย การ build add-on จากซอร์สโค้ด: [`blender_extension/README.md`](../../blender_extension/README.md)
+
+## สองวิธีในการใช้งาน
+
+### 🎨 ใน Blender — ไม่ต้องเขียนโค้ด
+
+1. ดาวน์โหลดไฟล์ zip สำหรับแพลตฟอร์มของคุณ เช่น `motion2mixamorig-<version>-macos-arm64.zip` จาก [รีลีสล่าสุด](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest)
+2. ใน Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…** แล้วเลือกไฟล์ zip
+3. 3D Viewport → กด **N** → แท็บ **Motion2MixamoRig** → **ติดตั้งรันไทม์ (คลิกเดียว)** (Install Runtime (one click))
+4. **เลือกโมเดล SMPL-X…** (Choose SMPL-X Model…) (ดาวน์โหลดได้ฟรี) แล้วเลือกไฟล์ FBX ตัวละคร Mixamo
+5. เลือกวิดีโอที่มีคนเพียงคนเดียว → **สร้างการเคลื่อนไหว** (Generate Motion)
+
+คำแนะนำทีละขั้นตอน เคล็ดลับ และการอัปเดต: **[คู่มือการใช้งาน](user-guide.th.md)** ทดสอบแล้วบน macOS (Apple Silicon)
+
+### 💻 บรรทัดคำสั่ง — สำหรับนักพัฒนา
+
+โคลนรีโพแล้วรัน pipeline ด้วยตัวเอง: เริ่มที่ [สิ่งที่ต้องมี](#สิ่งที่ต้องมี)
 
 Agent ควรเริ่มจาก [`AGENTS.md`](../../AGENTS.md)
 

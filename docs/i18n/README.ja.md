@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#事前準備"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.ja.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 ゲーム開発者向け：入力は**一人**の動作動画（または写真）と Mixamo キャラクター。プレビューと、Blender / Unity にそのまま入れられるスキン付きキャラクターファイル（`.glb`）を書き出します。
 
-> Motion2MixamoRig はまだ実験段階です。v0.1.6 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンの導入と使い方は [`blender_extension/README.md`](../../blender_extension/README.md)。
+> Motion2MixamoRig はまだ実験段階です。v0.1.6 はコマンドラインのパイプラインです。このリポジトリの Blender 4.2+ Extension は、同じパイプラインを外部 Python で実行します。アドオンをソースからビルドする方法：[`blender_extension/README.md`](../../blender_extension/README.md)。
+
+## 2 つの使い方
+
+### 🎨 Blender で使う — コーディング不要
+
+1. [最新リリース](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest)から、お使いのプラットフォーム用の zip（例：`motion2mixamorig-<version>-macos-arm64.zip`）をダウンロードします。
+2. Blender で **Edit → Preferences → Get Extensions → ∨ → Install from Disk…** を開き、zip を選びます。
+3. 3D Viewport → **N** を押す → **Motion2MixamoRig** タブ → **ランタイムをインストール（ワンクリック）**（Install Runtime (one click)）。
+4. **SMPL-X モデルを選択…**（Choose SMPL-X Model…）（無料でダウンロード可能）し、Mixamo キャラクターの FBX を選びます。
+5. 一人が映った動画を選ぶ → **モーションを生成**（Generate Motion）。
+
+手順の詳細、コツ、更新方法は **[ユーザーガイド](user-guide.ja.md)** を参照してください。macOS（Apple Silicon）でテスト済みです。
+
+### 💻 コマンドライン — 開発者向け
+
+リポジトリをクローンしてパイプラインを自分で実行します：[事前準備](#事前準備)から始めてください。
 
 Agent は先に [`AGENTS.md`](../../AGENTS.md) を読んでください。
 

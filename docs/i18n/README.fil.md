@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#mga-kailangan"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.fil.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Ilipat ang galaw ng isang tao sa video — o ang pose sa isang still na larawan 
 
 Para sa mga game developer: bigyan ito ng action video na may **iisang tao** (o isang still) at isang Mixamo character; gagawa ito ng mga preview video at isang skinned na character file (`.glb`) na puwede mong ilagay agad sa Blender o Unity.
 
-> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.6 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Paano i-install at gamitin ang add-on: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Eksperimental pa ang Motion2MixamoRig sa ngayon. Ang bersyon 0.1.6 ay ang command-line pipeline. May kasama ring Blender 4.2+ Extension ang repository na ito na nagpapatakbo ng parehong pipeline sa isang hiwalay na Python environment. Pag-build ng add-on mula sa source: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Dalawang paraan para gamitin ito
+
+### 🎨 Sa Blender — walang coding
+
+1. I-download ang zip para sa platform mo, hal. `motion2mixamorig-<version>-macos-arm64.zip`, mula sa [latest release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. Sa Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…**, piliin ang zip.
+3. 3D Viewport → pindutin ang **N** → **Motion2MixamoRig** tab → **I-install ang Runtime (isang click)** (Install Runtime (one click)).
+4. **Pumili ng SMPL-X Model…** (Choose SMPL-X Model…) (libreng download) at pumili ng Mixamo character FBX.
+5. Pumili ng video ng iisang tao → **Gumawa ng Galaw** (Generate Motion).
+
+Step-by-step na instructions, mga tip, at pag-update: **[User Guide](user-guide.fil.md)**. Na-test sa macOS (Apple Silicon).
+
+### 💻 Command line — para sa mga developer
+
+I-clone ang repository at ikaw mismo ang magpatakbo ng pipeline: magsimula sa [Mga Kailangan](#mga-kailangan).
 
 Dapat magsimula ang mga agent sa [`AGENTS.md`](../../AGENTS.md).
 

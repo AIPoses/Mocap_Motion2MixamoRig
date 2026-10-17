@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#前置需求"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.zh-Hant.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@
 
 給遊戲開發者：輸入一段**單人**動作影片（或一張人物照片）和一個 Mixamo 角色，就會輸出預覽影片，以及可以直接放進 Blender / Unity 的已蒙皮角色檔（`.glb`）。
 
-> Motion2MixamoRig 目前仍在實驗階段。v0.1.6 是命令列工作流程。本儲存庫另外提供一個 Blender 4.2+ Extension，會在外部的 Python 環境中執行同一條 pipeline。外掛的安裝與使用方式請見 [`blender_extension/README.md`](../../blender_extension/README.md)。
+> Motion2MixamoRig 目前仍在實驗階段。v0.1.6 是命令列工作流程。本儲存庫另外提供一個 Blender 4.2+ Extension，會在外部的 Python 環境中執行同一條 pipeline。從原始碼建置外掛：[`blender_extension/README.md`](../../blender_extension/README.md)。
+
+## 兩種使用方式
+
+### 🎨 在 Blender 中使用 — 不需要寫程式
+
+1. 從[最新版本](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest)下載適合你平台的 zip，例如 `motion2mixamorig-<version>-macos-arm64.zip`。
+2. 在 Blender 中：**Edit → Preferences → Get Extensions → ∨ → Install from Disk…**，選擇這個 zip。
+3. 3D Viewport → 按 **N** → **Motion2MixamoRig** 分頁 → **一鍵安裝執行環境**（Install Runtime (one click)）。
+4. **選擇 SMPL-X 模型檔案…**（Choose SMPL-X Model…）（可免費下載），再選擇一個 Mixamo 角色 FBX。
+5. 選擇一段單人影片 → **產生動作**（Generate Motion）。
+
+逐步說明、使用訣竅與更新方式請見 **[使用指南](user-guide.zh-Hant.md)**。已在 macOS（Apple Silicon）上測試。
+
+### 💻 命令列 — 給開發者
+
+clone 儲存庫，自行執行 pipeline：從[前置需求](#前置需求)開始。
 
 Agent 請先閱讀 [`AGENTS.md`](../../AGENTS.md)。
 

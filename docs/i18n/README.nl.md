@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#vereisten"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.nl.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Zet de beweging van een persoon in een video — of de pose op een foto — over
 
 Voor gameontwikkelaars: geef een actievideo met **één persoon** (of een foto) en een Mixamo-personage op; het levert previewvideo's en een geskind personagebestand (`.glb`) dat je direct in Blender of Unity kunt laden.
 
-> Motion2MixamoRig is momenteel experimenteel. Versie 0.1.6 is de command-line-pipeline. Deze repository bevat ook een Blender 4.2+ Extension die dezelfde pipeline in een externe Python-omgeving uitvoert. De add-on installeren en gebruiken: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig is momenteel experimenteel. Versie 0.1.6 is de command-line-pipeline. Deze repository bevat ook een Blender 4.2+ Extension die dezelfde pipeline in een externe Python-omgeving uitvoert. De add-on vanuit de broncode bouwen: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## Twee manieren om het te gebruiken
+
+### 🎨 In Blender — zonder programmeren
+
+1. Download de zip voor je platform, bijv. `motion2mixamorig-<version>-macos-arm64.zip`, van de [nieuwste release](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest).
+2. In Blender: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…** en kies de zip.
+3. 3D Viewport → druk op **N** → tabblad **Motion2MixamoRig** → **Runtime installeren (één klik)** (Install Runtime (one click)).
+4. **SMPL-X-model kiezen…** (Choose SMPL-X Model…; gratis te downloaden) en kies een FBX van een Mixamo-personage.
+5. Kies een video van één persoon → **Beweging genereren** (Generate Motion).
+
+Stapsgewijze instructies, tips en bijwerken: **[Gebruikershandleiding](user-guide.nl.md)**. Getest op macOS (Apple Silicon).
+
+### 💻 Command line — voor ontwikkelaars
+
+Clone de repository en voer de pipeline zelf uit: begin bij [Vereisten](#vereisten).
 
 Agents moeten beginnen bij [`AGENTS.md`](../../AGENTS.md).
 

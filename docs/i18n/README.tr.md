@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#gereksinimler"><img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white"></a>
-  <a href="../../blender_extension/README.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
+  <a href="user-guide.tr.md"><img alt="Blender 4.2+" src="https://img.shields.io/badge/Blender-4.2%2B-orange?logo=blender&logoColor=white"></a>
   <a href="https://github.com/MaxLiu22/Motion2MixamoRig/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MaxLiu22/Motion2MixamoRig?style=social"></a>
 </p>
 
@@ -16,7 +16,23 @@ Bir videodaki kişinin hareketini — ya da bir fotoğraftaki pozu — Adobe Mix
 
 Oyun geliştiricileri için: **tek kişilik** bir aksiyon videosu (ya da bir fotoğraf) ve bir Mixamo karakteri verin; araç önizleme videoları ile Blender veya Unity'ye doğrudan aktarabileceğiniz skin'lenmiş bir karakter dosyası (`.glb`) üretir.
 
-> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.6 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentinin kurulumu ve kullanımı: [`blender_extension/README.md`](../../blender_extension/README.md).
+> Motion2MixamoRig şu anda deneysel aşamadadır. 0.1.6 sürümü komut satırı pipeline'ıdır. Bu depo ayrıca aynı pipeline'ı harici bir Python ortamında çalıştıran bir Blender 4.2+ Extension da içerir. Eklentiyi kaynak koddan derlemek için: [`blender_extension/README.md`](../../blender_extension/README.md).
+
+## İki kullanım yolu
+
+### 🎨 Blender'da — kod yazmadan
+
+1. Platformunuza uygun zip dosyasını, örneğin `motion2mixamorig-<version>-macos-arm64.zip`, [en son sürüm](https://github.com/MaxLiu22/Motion2MixamoRig/releases/latest) sayfasından indirin.
+2. Blender'da: **Edit → Preferences → Get Extensions → ∨ → Install from Disk…** ile zip dosyasını seçin.
+3. 3D Viewport → **N** tuşuna basın → **Motion2MixamoRig** sekmesi → **Çalışma Ortamını Kur (tek tık)** (Install Runtime (one click)).
+4. **SMPL-X Modeli Seç…** (Choose SMPL-X Model…) (ücretsiz indirme) ve bir Mixamo karakter FBX dosyası seçin.
+5. Tek kişilik bir video seçin → **Hareket Üret** (Generate Motion).
+
+Adım adım talimatlar, ipuçları ve güncelleme: **[Kullanım Kılavuzu](user-guide.tr.md)**. macOS (Apple Silicon) üzerinde test edilmiştir.
+
+### 💻 Komut satırı — geliştiriciler için
+
+Depoyu klonlayın ve pipeline'ı kendiniz çalıştırın: [Gereksinimler](#gereksinimler) bölümünden başlayın.
 
 Agent'lar işe [`AGENTS.md`](../../AGENTS.md) ile başlamalıdır.
 
